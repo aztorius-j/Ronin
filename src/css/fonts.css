@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'GTWalsheimPro-Medium';
+  src: url('/fonts/GTWalsheimPro-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'GTWalsheimPro-Bold';
+  src: url('/fonts/GTWalsheimPro-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Humane-Regular';
+  src: url('/fonts/Humane-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Humane-Medium';
+  src: url('/fonts/Humane-Medium.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Humane-SemiBold';
+  src: url('/fonts/Humane-SemiBold.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Humane-Bold';
+  src: url('/fonts/Humane-Bold.otf') format('opentype');
+}
