@@ -1,4 +1,9 @@
 @font-face {
+  font-family: 'GTWalsheimPro-Regular';
+  src: url('/fonts/GTWalsheimPro-Regular.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'GTWalsheimPro-Medium';
   src: url('/fonts/GTWalsheimPro-Medium.ttf') format('truetype');
 }
@@ -15,12 +20,12 @@
 
 @font-face {
   font-family: 'Humane-Medium';
-  src: url('/fonts/Humane-Medium.otf') format('truetype');
+  src: url('/fonts/Humane-Medium.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Humane-SemiBold';
-  src: url('/fonts/Humane-SemiBold.otf') format('truetype');
+  src: url('/fonts/Humane-SemiBold.otf') format('opentype');
 }
 
 @font-face {

@@ -1,0 +1,80 @@
+body {
+  position: relative;
+}
+
+header {
+  width: 100%;
+  padding: 2.75rem;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.logo-container {
+  flex: 0 0 auto;
+}
+
+img.header-logo {
+  width: 130px;
+  height: 130px;
+}
+
+.info-panel {
+  width: 49rem;
+  height: 5.75rem;
+}
+
+.blur-element {
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+
+  background-color: rgba(37, 37, 37, .3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.info-panel-box {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.icon-container,
+.info-container {
+  padding-right: .75rem;
+}
+
+img.info-panel-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.weather .info-container p {
+  min-width: 5rem;
+  max-width: 6.25rem;
+}
+
+.main-info {
+  font-family: 'GTWalsheimPro-Bold';
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--creme);
+  text-transform: uppercase;
+}
+
+.additional-info {
+  font-family: 'GTWalsheimPro-Regular';
+  font-size: .75rem;
+  font-weight: 400;
+  line-height: 110%;
+  color: var(--creme);
+}

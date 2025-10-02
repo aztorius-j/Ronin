@@ -8,8 +8,86 @@
   <link rel="stylesheet" href="src/css/fonts.css">
   <link rel="stylesheet" href="src/css/variables.css">
   <link rel="stylesheet" href="src/css/main.css">
+  <link rel="stylesheet" href="src/css/landing-page.css">
 </head>
 <body>
+
+  <!-- HEADER -->
+  <header>
+
+    <div class="logo-container">
+      <img src="img/ronin-creme-logo.png" alt="logo" class="header-logo">
+    </div>
+
+    <div class="info-panel">
+      <div class="blur-element">
+
+        <div class="info-panel-box weather">
+          <div class="icon-container">
+            <img src="img/sun-icon.png" alt="sun" class="info-panel-icon">
+          </div>
+          <div class="info-container">
+            <p class="main-info" id="temperature"></p>
+            <p class="additional-info" id="weather-interpretation"></p>
+          </div>
+        </div>
+
+        <div class="info-panel-box open-hours">
+          <div class="icon-container">
+            <img src="img/clock-icon.png" alt="clock" class="info-panel-icon">
+          </div>
+          <div class="info-container">
+            <p class="main-info">OPEN HOURS</p>
+            <p class="additional-info">Mon~Fri: 8:30~18:00</p>
+            <p class="additional-info">Sat~Sun: 9:30~18:00</p>
+          </div>
+        </div>
+
+        <div class="info-panel-box directions">
+          <div class="icon-container">
+            <img src="img/directions-icon.png" alt="directions" class="info-panel-icon">
+          </div>
+          <div class="info-container">
+            <p class="main-info">GET DIRECTIONS</p>
+            <p class="additional-info">J. Masaryka 332/52,</p>
+            <p class="additional-info">120 00 Vinohrady, Prague</p>
+          </div>
+        </div>
+
+        <div class="info-panel-box coffee">
+          <div class="icon-container">
+            <img src="img/coffee-icon.png" alt="coffee" class="info-panel-icon">
+          </div>
+          <div class="info-container">
+            <p class="main-info">NA MLYNCI MAME</p>
+            <p class="additional-info">Be Berry Colombia</p>
+            <p class="additional-info">Be Berry Honduras</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </header>
+
+  <main>
+
+    <!-- LANDING PAGE -->
+    <section id="landing-page">
+
+      <h1>FROM STREET<br>HUSTLE TO<br>COFFEE CULTURE</h1>
+      <div class="flex-container">
+        <div class="container">
+          <p>Naše “HU$TLING HOURS” nie sú len otváracie hodiny - sú výzvou pre každého, kto vstúpi dovnútra</p>
+          <a href="#">Zistite o nás viac</a>
+        </div>
+      </div>
+      
+    </section>
+
+  </main>
+
+    <script src="src/js/weather.js"></script>
   
 </body>
 </html>
