@@ -1,11 +1,10 @@
 #landing-page {
-  min-height: 240vh;
   background: url('/img/landing-page-bg-image.webp') right center / cover no-repeat;
 }
 
 h1 {
   font-family: 'Humane-Medium';
-  font-size: 26.75rem;
+  font-size: clamp(8rem, 30vw, 26.75rem);
   font-weight: 500;
   line-height: 77.5%;
   white-space: nowrap;
@@ -22,18 +21,11 @@ h1 {
 #landing-page .container {
   width: 30rem;
   height: 15.25rem;
-  margin-right: 10rem;
+  margin: 0 8% 50vh 0;
 }
 
-#landing-page p {
-  font-family: 'GTWalsheimPro-Bold';
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 110%;
-  text-transform: uppercase;
-  color: var(--dark-red);
-  
-  margin-bottom: 3rem;
+#landing-page .red-paragraph {
+  margin-bottom: 2.5rem;
 }
 
 #landing-page a {
@@ -43,6 +35,19 @@ h1 {
   text-transform: uppercase;
   color: var(--creme);
 
+  display: inline-block;
   padding: 1.25rem 3.5rem;
   background-color: var(--dark-red);
+}
+
+
+@media screen and (max-width: 680px) {
+  #landing-page .flex-container {
+    justify-content: flex-start;
+  }
+
+  #landing-page .container {
+    margin: 0 0 50vh 2.0;
+    padding: 0 2.75rem;
+  }
 }

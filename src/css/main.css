@@ -1,5 +1,6 @@
 body {
   position: relative;
+  background-color: var(--light-creme);
 }
 
 header {
@@ -77,4 +78,43 @@ img.info-panel-icon {
   font-weight: 400;
   line-height: 110%;
   color: var(--creme);
+}
+
+.red-paragraph {
+  font-family: 'GTWalsheimPro-Bold';
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 110%;
+  text-transform: uppercase;
+  color: var(--dark-red);
+}
+
+.red-paragraph b {
+  font-weight: 700;
+  color: var(--black);
+}
+
+.black-paragraph {
+  font-family: 'GTWalsheimPro-Medium';
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 110%;
+  color: var(--black);
+}
+
+
+@media screen and (max-width: 1080px) {
+  .info-panel {
+    width: auto;
+  }
+
+  .weather, .directions {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .info-panel {
+    display: none;
+  }
 }

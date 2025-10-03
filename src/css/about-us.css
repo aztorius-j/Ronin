@@ -1,0 +1,96 @@
+#about-us {
+  padding: 6.5% 11.3%;
+}
+
+#about-us .max-width-container {
+  max-width: 1520px;
+  margin: 0 auto;
+}
+
+#about-us figure {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#about-us figure img:first-of-type {
+  position: relative;
+  left: 1px;
+}
+
+#about-us figure img:nth-of-type(2) {
+  position: relative;
+  right: 1px;
+}
+
+#about-us .headline {
+  position: relative;
+  margin: 9% 0 1rem 0;
+}
+
+h2 {
+  font-family: 'Humane-Medium';
+  font-size: clamp(7rem, 30vw, 36.875rem);
+  font-weight: 500;
+  line-height: 77.5%;
+  white-space: nowrap;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--dark-red);
+}
+
+#about-us .headline img {
+  width: clamp(2rem, 8vw, 9.5rem);
+  position: absolute;
+  top: 22%;
+  left: 14.6%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.left {
+  grid-column: span 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.left img {
+  width: 90%;
+  position: relative;
+  top: 10%;
+}
+
+.gap {
+  grid-column: span 1;
+}
+
+.right {
+  grid-column: span 4;
+}
+
+.right img {
+  width: 90%;
+  margin-bottom: 14%;
+}
+
+
+@media screen and (max-width: 840px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .left img {
+    display: none;
+  }
+
+  .right img {
+    width: 100%;
+    margin: 10% 0;
+  }
+}
