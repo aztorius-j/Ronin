@@ -89,9 +89,9 @@ img.info-panel-icon {
   color: var(--dark-red);
 }
 
-.red-paragraph b {
-  font-weight: 700;
-  color: var(--black);
+b {
+  font-weight: inherit;
+  color: var(--black) !important;
 }
 
 .black-paragraph {

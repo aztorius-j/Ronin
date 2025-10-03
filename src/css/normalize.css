@@ -1,6 +1,6 @@
 :root {
-  -webkit-font-smoothing: antialiased; /* otestovať */
-  -moz-osx-font-smoothing: grayscale; /* otestovať */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 *, *::before, *::after {
