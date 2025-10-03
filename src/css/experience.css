@@ -1,0 +1,78 @@
+#experience {
+  padding: min(8.4%, 9rem);
+  text-align: center;
+}
+
+#experience .max-width-container {
+  max-width: 1520px;
+  margin: 0 auto;
+}
+
+#experience .grid {
+  grid-template-columns: repeat(12, 1fr);
+  padding-bottom: 30%;
+}
+
+#experience .grid .left,
+#experience .grid .right {
+  grid-column: span 3;
+  position: relative;
+}
+
+#experience .grid .center {
+  grid-column: span 4;
+}
+
+#experience .grid .gap {
+  grid-column: span 1;
+}
+
+#experience .left img {
+  display: block;
+  margin-left: auto;
+}
+
+#experience .right img {
+  display: block;
+}
+
+#experience .left img:nth-of-type(1) {
+  position: absolute;
+  top: 20.5%;
+  right: 35%;
+}
+
+#experience .left img:nth-of-type(2) {
+  position: absolute;
+  top: 85%;
+  left: 28%;
+}
+
+#experience .right img:nth-of-type(1) {
+  position: absolute;
+  top: 8.5%;
+  left: 35%;
+}
+
+#experience .right img:nth-of-type(2) {
+  position: absolute;
+  top: 89%;
+  right: 29%;
+}
+
+h3 {
+  font-family: 'Humane-Medium';
+  font-size: clamp(7rem, 21.5vw, 25rem);
+  font-weight: 500;
+  line-height: 77.5%;
+  white-space: nowrap;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--dark-red);
+}
+
+#experience .max-width-paragraph {
+  max-width: 1350px;
+  margin: 2.75% auto 3rem auto;
+  text-align: center;
+}

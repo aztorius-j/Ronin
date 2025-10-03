@@ -1,0 +1,4 @@
+#banner {
+  height: 100vh;
+  background: url('/img/banner.webp') center center / cover no-repeat;
+}

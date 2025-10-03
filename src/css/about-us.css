@@ -46,12 +46,11 @@ h2 {
   left: 14.6%;
 }
 
-.grid {
-  display: grid;
+#about-us .grid {
   grid-template-columns: repeat(10, 1fr);
 }
 
-.left {
+#about-us .left {
   grid-column: span 5;
   display: flex;
   flex-direction: column;
@@ -59,37 +58,37 @@ h2 {
   align-items: flex-start;
 }
 
-.left img {
+#about-us .left img {
   width: 90%;
   position: relative;
   top: 10%;
 }
 
-.gap {
+#about-us .gap {
   grid-column: span 1;
 }
 
-.right {
+#about-us .right {
   grid-column: span 4;
 }
 
-.right img {
+#about-us .right img {
   width: 90%;
   margin-bottom: 14%;
 }
 
 
 @media screen and (max-width: 840px) {
-  .grid {
+  #about-us .grid {
     display: flex;
     flex-direction: column;
   }
 
-  .left img {
+  #about-us .left img {
     display: none;
   }
 
-  .right img {
+  #about-us .right img {
     width: 100%;
     margin: 10% 0;
   }

@@ -28,18 +28,6 @@ h1 {
   margin-bottom: 2.5rem;
 }
 
-#landing-page a {
-  font-family: 'GTWalsheimPro-Bold';
-  font-size: 1.25rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--creme);
-
-  display: inline-block;
-  padding: 1.25rem 3.5rem;
-  background-color: var(--dark-red);
-}
-
 
 @media screen and (max-width: 680px) {
   #landing-page .flex-container {

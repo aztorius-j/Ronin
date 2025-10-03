@@ -8,39 +8,39 @@
   gap: 2.375rem;
 }
 
-.marquee-wrapper {
+#hustling .marquee-wrapper {
   display: flex;
   align-items: center;
   min-width: max-content;
 }
 
-.marquee {
+#hustling .marquee {
   display: flex;
   align-items: center;
   min-width: max-content;
 }
 
-.marquee-wrapper:first-of-type .marquee:nth-child(1),
-.marquee-wrapper:first-of-type .marquee:nth-child(2) {
+#hustling .marquee-wrapper:first-of-type .marquee:nth-child(1),
+#hustling .marquee-wrapper:first-of-type .marquee:nth-child(2) {
   animation: infiniteScroll 20s linear infinite;
 }
 
-.marquee-wrapper:nth-of-type(2) .marquee:nth-child(1),
-.marquee-wrapper:nth-of-type(2) .marquee:nth-child(2) {
+#hustling .marquee-wrapper:nth-of-type(2) .marquee:nth-child(1),
+#hustling .marquee-wrapper:nth-of-type(2) .marquee:nth-child(2) {
   animation: infiniteScrollInverse 50s linear infinite;
 }
 
-.marquee-wrapper:nth-of-type(3) .marquee:nth-child(1),
-.marquee-wrapper:nth-of-type(3) .marquee:nth-child(2) {
+#hustling .marquee-wrapper:nth-of-type(3) .marquee:nth-child(1),
+#hustling .marquee-wrapper:nth-of-type(3) .marquee:nth-child(2) {
   animation: infiniteScroll 12s linear infinite;
 }
 
-.marquee-wrapper:nth-of-type(4) .marquee:nth-child(1),
-.marquee-wrapper:nth-of-type(4) .marquee:nth-child(2) {
+#hustling .marquee-wrapper:nth-of-type(4) .marquee:nth-child(1),
+#hustling .marquee-wrapper:nth-of-type(4) .marquee:nth-child(2) {
   animation: infiniteScrollInverse 17s linear infinite;
 }
 
-.marquee span {
+#hustling .marquee span {
   font-family: 'Humane-Regular';
   font-size: 18.75rem;
   font-weight: 400;
