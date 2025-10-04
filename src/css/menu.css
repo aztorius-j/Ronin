@@ -1,6 +1,6 @@
 #menu {
   background-color: var(--dark-red);
-  padding:7.5% 2% 12% 2%;
+  padding: 7.5% 2% 12% 2%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }

@@ -1,0 +1,91 @@
+#gallery {
+  padding: 6% 0;
+  background-color: var(--light-creme);
+}
+
+#gallery .japanese-container,
+#gallery .images-container {
+  padding: 4% 2% 0 2%;
+  display: grid;
+  gap: 2%;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+#gallery .japanese-container {
+  height: 100vh;
+  position: sticky;
+  /* position: relative; */
+  top: 0;
+}
+
+#gallery .images-container {
+  padding-top: calc(4% - .5em);
+  transform: translateY(-100vh);
+}
+
+#gallery .red-circle {
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  background-color: var(--dark-red);
+  mix-blend-mode: difference;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#gallery .left {
+  grid-column: 2 / 8;
+}
+
+#gallery .right {
+  grid-column: 8 / 13;
+}
+
+h4 {
+  font-size: clamp(7rem, 15vw, 16.875rem);
+  color: var(--dark-red);
+  margin-bottom: 3%;
+}
+
+#gallery h4 b {
+  mix-blend-mode: overlay;
+}
+
+#gallery .red-paragraph {
+  max-width: 48rem;
+  margin-bottom: 2rem;
+}
+
+#gallery a {
+  mix-blend-mode: multiply;     /* VYBRAŤ */
+  /* mix-blend-mode: screen;       */
+  /* mix-blend-mode: overlay;       */
+  /* mix-blend-mode: soft-light;  */
+}
+
+#gallery .gallery-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75vw;
+}
+
+.hustling-vertical {
+  font-family: 'Humane-Regular';
+  font-size: 18.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--dark-red);
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate(-2.2%, 100%) rotate(-90deg);
+  transform-origin: top left;
+}
+
+
+
