@@ -1,5 +1,5 @@
 :root {
-  --black: #000000;
+  --black: 0, 0, 0;
   --white: #FFFFFF;
   --creme:#EAE1C3;
   --light-creme: #F5EDE0;

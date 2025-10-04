@@ -28,13 +28,8 @@
   margin: 9% 0 1rem 0;
 }
 
-h2 {
-  font-family: 'Humane-Medium';
+#about-us h2 {
   font-size: clamp(7rem, 30vw, 36.875rem);
-  font-weight: 500;
-  line-height: 77.5%;
-  white-space: nowrap;
-  text-transform: uppercase;
   text-align: center;
   color: var(--dark-red);
 }

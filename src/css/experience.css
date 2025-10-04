@@ -60,13 +60,8 @@
   right: 29%;
 }
 
-h3 {
-  font-family: 'Humane-Medium';
+#experience h3 {
   font-size: clamp(7rem, 21.5vw, 25rem);
-  font-weight: 500;
-  line-height: 77.5%;
-  white-space: nowrap;
-  text-transform: uppercase;
   text-align: center;
   color: var(--dark-red);
 }

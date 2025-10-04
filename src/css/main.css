@@ -3,9 +3,17 @@ body {
   background-color: var(--light-creme);
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Humane-Medium';
+  font-weight: 500;
+  line-height: 77.5%;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
 header {
   width: 100%;
-  padding: 2.75rem;
+  padding: 2.75rem 2vw;
 
   position: absolute;
   top: 0;
@@ -91,7 +99,7 @@ img.info-panel-icon {
 
 b {
   font-weight: inherit;
-  color: var(--black) !important;
+  color: rgb(var(--black)) !important;
 }
 
 .black-paragraph {
@@ -99,7 +107,7 @@ b {
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 110%;
-  color: var(--black);
+  color: rgb(var(--black));
 }
 
 a.red-button {
