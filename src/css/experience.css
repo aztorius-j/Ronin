@@ -15,16 +15,19 @@
 
 #experience .grid .left,
 #experience .grid .right {
-  grid-column: span 3;
   position: relative;
 }
 
-#experience .grid .center {
-  grid-column: span 4;
+#experience .grid .left {
+  grid-column: 2 / 5;
 }
 
-#experience .grid .gap {
-  grid-column: span 1;
+#experience .grid .center {
+  grid-column: 5 / 9;
+}
+
+#experience .grid .right {
+  grid-column: 9 / 12;
 }
 
 #experience .left img {

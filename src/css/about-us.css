@@ -46,7 +46,7 @@
 }
 
 #about-us .left {
-  grid-column: span 5;
+  grid-column: 1 / 6;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -59,12 +59,8 @@
   top: 10%;
 }
 
-#about-us .gap {
-  grid-column: span 1;
-}
-
 #about-us .right {
-  grid-column: span 4;
+  grid-column: 7 / 11;
 }
 
 #about-us .right img {

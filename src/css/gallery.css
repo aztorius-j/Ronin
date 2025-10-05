@@ -1,47 +1,41 @@
 #gallery {
-  padding: 6% 0;
+  padding: 6% 0 12% 0; /* spodný padding dočasne */
   background-color: var(--light-creme);
 }
 
-#gallery .japanese-container,
-#gallery .images-container {
-  padding: 4% 2% 0 2%;
-  display: grid;
-  gap: 2%;
+#gallery .grid {
+  padding: 6vw 2vw 0 2vw;
+  padding-top: min(6.375rem, 6vw);
   grid-template-columns: repeat(12, 1fr);
-}
-
-#gallery .japanese-container {
-  height: 100vh;
-  position: sticky;
-  /* position: relative; */
-  top: 0;
-}
-
-#gallery .images-container {
-  padding-top: calc(4% - .5em);
-  transform: translateY(-100vh);
+  gap: 2%;
 }
 
 #gallery .red-circle {
-  width: 900px;
-  height: 900px;
+  width: 1020px;
+  height: 1020px;
   border-radius: 50%;
   background-color: var(--dark-red);
   mix-blend-mode: difference;
 
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  right: 0;
+  transform: translate(50%, -50%);
 }
 
 #gallery .left {
-  grid-column: 2 / 8;
+  grid-column: 2 / 7;
+  align-self: flex-start;
+  position: sticky;
+  top: min(6.375rem, 6vw);
+  isolation: isolate; 
 }
 
 #gallery .right {
-  grid-column: 8 / 13;
+  grid-column: 7 / 13;
+  position: relative;
+  bottom: min(9px, .5vw);
+  margin-bottom: min(-9px, -0.5vw);
 }
 
 h4 {
@@ -59,11 +53,11 @@ h4 {
   margin-bottom: 2rem;
 }
 
-#gallery a {
-  mix-blend-mode: multiply;     /* VYBRAŤ */
-  /* mix-blend-mode: screen;       */
-  /* mix-blend-mode: overlay;       */
-  /* mix-blend-mode: soft-light;  */
+#gallery a { /* VYBRAŤ */
+  mix-blend-mode: multiply;
+  /* mix-blend-mode: screen; */
+  /* mix-blend-mode: overlay; */
+  /* mix-blend-mode: soft-light; */
 }
 
 #gallery .gallery-wrapper {

@@ -1,0 +1,113 @@
+#partners {
+  padding: 9% 2vw;
+  background-color: rgb(var(--black));
+}
+
+#partners .grid {
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto 1fr;
+  row-gap: 2vw;
+  column-gap: 2%;
+}
+
+#partners .headline {
+  grid-column: 1 / 13;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+h5 {
+  font-size: clamp(8rem, 30vw, 26.75rem);
+  color: var(--white);
+}
+
+#partners .arrow-left:hover {
+  content: url("/img/white-arrow-left-hover.svg");
+}
+
+#partners .arrow-right:hover {
+  content: url("/img/white-arrow-right-hover.svg");
+}
+
+#partners .partners-container {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2%;
+}
+
+#partners .small-box {
+  grid-column: 1 / 4;
+}
+
+#partners .large-box {
+  grid-column: 4 / 10;
+}
+
+#partners .partners-container .small-box:last-of-type {
+  grid-column: 10 / 13;
+}
+
+#partners .partner-img {
+  height: 27.375rem;
+}
+
+#partners .small-box .partner-img {
+  height: 27.375rem;
+  background: url('/img/partner01.webp') center center / cover no-repeat;
+}
+
+#partners .large-box .partner-img {
+  height: 27.375rem;
+  background: url('/img/partner02.webp') center center / cover no-repeat;
+}
+
+#partners .partner-info {
+  height: 8.5rem;
+  padding: 2rem 2.25rem;
+  background-color: white;
+}
+
+#partners .partner-name {
+  font-family: 'GTWalsheimPro-Bold';
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 110%;
+  text-transform: uppercase;
+  color: rgb(var(--black));
+  margin-bottom: .5rem;
+}
+
+#partners .partner-insta {
+  font-family: 'GTWalsheimPro-Medium';
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 110%;
+  color: rgb(var(--black));
+}
+
+
+@media screen and (max-width: 2280px) {
+  #partners .partners-container .small-box:last-of-type {
+    display: none;
+  }
+
+  #partners .small-box {
+    grid-column: 1 / 5;
+  }
+
+  #partners .large-box {
+    grid-column: 5 / 13;
+  }
+}
+
+@media screen and (max-width: 1640px) {
+  #partners .small-box {
+    display: none;
+  }
+
+  #partners .large-box {
+    grid-column: 1 / 13;
+  }
+}
