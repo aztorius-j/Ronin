@@ -1,0 +1,62 @@
+#testimonials {
+  padding: 14% 2vw 16% 2vw;
+  background-color: var(--dark-red);
+}
+
+#testimonials h5 {
+  color: rgb(var(--black));
+}
+
+#testimonials .arrow-left:hover {
+  content: url("/img/black-arrow-left-hover.svg");
+}
+
+#testimonials .arrow-right:hover {
+  content: url("/img/black-arrow-right-hover.svg");
+}
+
+#testimonials .testimonial {
+  height: 25rem;
+  padding: 2.125rem;
+  grid-column: span 6;
+  background-color: rgb(var(--black));
+
+  display: flex;
+  flex-direction: column;
+}
+
+#testimonials .star {
+  width: 1.75rem;
+}
+
+#testimonials .review,
+#testimonials .source-box {
+  font-family: 'GTWalsheimPro-Medium';
+  font-weight: 500;
+  line-height: 110%;
+  letter-spacing: -0.04em;
+  color: var(--white);
+}
+
+#testimonials .review {
+  font-size: 1.875rem;
+  margin: 1.75rem 0;
+}
+
+#testimonials .source-box {
+  font-size: 1.125rem;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+@media screen and (max-width: 1360px) {
+  #testimonials .testimonial {
+    grid-column: span 12;
+  }
+
+  #testimonials .testimonial:nth-of-type(2) {
+    display: none;
+  }
+}

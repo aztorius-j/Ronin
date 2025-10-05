@@ -126,6 +126,11 @@ a.red-button {
   display: grid;
 }
 
+.arrow-left,
+.arrow-right {
+  cursor: pointer;
+}
+
 
 @media screen and (max-width: 1080px) {
   .info-panel {

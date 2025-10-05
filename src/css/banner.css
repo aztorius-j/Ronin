@@ -65,6 +65,11 @@
   justify-self: flex-end;
 }
 
+#banner-three {
+  height: 130vh;
+  background: url('/img/banner3.webp') center center / cover no-repeat;
+}
+
 
 @media screen and (max-width: 1040px) {
   #banner-two .grid {

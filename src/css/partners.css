@@ -3,22 +3,27 @@
   background-color: rgb(var(--black));
 }
 
-#partners .grid {
+#partners .grid,
+#testimonials .grid {
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto 1fr;
   row-gap: 2vw;
   column-gap: 2%;
 }
 
-#partners .headline {
+#partners .headline,
+#testimonials .headline {
   grid-column: 1 / 13;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: baseline;
 }
 
 h5 {
   font-size: clamp(8rem, 30vw, 26.75rem);
+}
+
+#partners h5 {
   color: var(--white);
 }
 
@@ -30,7 +35,8 @@ h5 {
   content: url("/img/white-arrow-right-hover.svg");
 }
 
-#partners .partners-container {
+#partners .partners-container,
+#testimonials .testimonials-container {
   grid-column: 1 / 13;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
