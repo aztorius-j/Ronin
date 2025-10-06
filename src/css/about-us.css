@@ -39,6 +39,8 @@
   position: absolute;
   top: 22%;
   left: 14.6%;
+
+  animation: logoRotation 20s linear infinite;
 }
 
 #about-us .grid {
@@ -68,6 +70,11 @@
   margin-bottom: 14%;
 }
 
+
+@keyframes logoRotation {
+  from { transform: rotate(0deg) }
+  to { transform: rotate(360deg)}
+}
 
 @media screen and (max-width: 840px) {
   #about-us .grid {

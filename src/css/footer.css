@@ -1,0 +1,79 @@
+footer {
+  padding: 5% 2vw 0 2vw;
+  background-color: var(--dark-red);
+}
+
+footer .footer-headline {
+  display: flex;
+  gap: 7%;
+}
+
+footer h5 {
+  font-size: clamp(15rem, 50vw, 46.5rem);
+  color: rgb(var(--black));
+}
+
+footer .black-paragraph {
+  letter-spacing: -.04em;
+}
+
+footer .contact {
+  margin-bottom: 2.25rem;
+}
+
+footer .contact a {
+  display: block;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+footer .address-and-socials {
+  display: flex;
+  gap: 5rem;
+}
+
+footer .address p:first-of-type,
+footer .socials p {
+  font-size: 1.125rem;
+  margin-bottom: 1.125rem;
+}
+
+footer .address p:nth-of-type(2) {
+  font-size: 1.5rem;
+  line-height: 1.2em;
+}
+
+footer .socials a {
+  display: inline-block;
+  width: 3.625rem;
+  height: 3.625rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+footer .socials a:first-of-type {
+  margin-right: 1rem;
+}
+
+footer .google-maps {
+  width: 100%;
+  height: 28.125rem;
+}
+
+footer .credits {
+  display: flex;
+  justify-content: space-between;
+  padding: 2.5rem 0;
+}
+
+footer .credits span {
+  font-family: 'GTWalsheimPro-Regular';
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 110%;
+  color: rgb(var(--black));
+}
+
+footer .credits .right span {
+  padding-left: 2.5rem;
+}

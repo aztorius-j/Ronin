@@ -1,5 +1,5 @@
 #gallery {
-  padding: 6% 0 12% 0; /* spodný padding dočasne */
+  padding: 6% 0 12% 0;          /* spodný padding dočasne */
   background-color: var(--light-creme);
 }
 
@@ -26,7 +26,7 @@
 #gallery .left {
   grid-column: 2 / 7;
   align-self: flex-start;
-  position: sticky;
+  position: sticky;           /* bude treba odstrániť po implementácii GSAP */
   top: min(6.375rem, 6vw);
   isolation: isolate; 
 }
@@ -53,7 +53,7 @@ h4 {
   margin-bottom: 2rem;
 }
 
-#gallery a { /* VYBRAŤ */
+#gallery a {                        /* VYBRAŤ */
   mix-blend-mode: multiply;
   /* mix-blend-mode: screen; */
   /* mix-blend-mode: overlay; */
