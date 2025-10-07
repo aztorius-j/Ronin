@@ -1,13 +1,6 @@
-#gallery {
-  padding: 6% 0 12% 0;          /* spodný padding dočasne */
-  background-color: var(--light-creme);
-}
-
 #gallery .grid {
-  padding: 6vw 2vw 0 2vw;
-  padding-top: min(6.375rem, 6vw);
   grid-template-columns: repeat(12, 1fr);
-  gap: 2%;
+  gap: 2.75vw;
 }
 
 #gallery .red-circle {
@@ -25,17 +18,10 @@
 
 #gallery .left {
   grid-column: 2 / 7;
-  align-self: flex-start;
-  position: sticky;           /* bude treba odstrániť po implementácii GSAP */
-  top: min(6.375rem, 6vw);
-  isolation: isolate; 
 }
 
 #gallery .right {
   grid-column: 7 / 13;
-  position: relative;
-  bottom: min(9px, .5vw);
-  margin-bottom: min(-9px, -0.5vw);
 }
 
 h4 {
@@ -44,7 +30,7 @@ h4 {
   margin-bottom: 3%;
 }
 
-#gallery h4 b {
+h4 b {
   mix-blend-mode: overlay;
 }
 
@@ -53,11 +39,8 @@ h4 {
   margin-bottom: 2rem;
 }
 
-#gallery a {                        /* VYBRAŤ */
+#gallery a {
   mix-blend-mode: multiply;
-  /* mix-blend-mode: screen; */
-  /* mix-blend-mode: overlay; */
-  /* mix-blend-mode: soft-light; */
 }
 
 #gallery .gallery-wrapper {
@@ -66,20 +49,54 @@ h4 {
   gap: 2.75vw;
 }
 
+/* PART ONE */
+
+#gallery .gallery-part-one {
+  padding: 6% 0 2.75vw 0;
+  background-color: var(--light-creme);
+}
+
+#gallery .gallery-part-one .grid {
+  padding: 6vw 2vw 0 2vw;
+  padding-top: min(6.375rem, 6vw);
+}
+
+#gallery .gallery-part-one .left {
+  align-self: flex-start;
+  position: sticky;           /* bude treba odstrániť po implementácii GSAP */
+  top: min(6.375rem, 6vw);
+}
+
+#gallery .gallery-part-one .right {
+  position: relative;
+  bottom: min(9px, .5vw);
+  margin-bottom: min(-9px, -0.5vw);
+}
+
+/* PART TWO */
+
+#gallery .gallery-part-two {
+  padding: 0 0 12% 0;
+  background-color: var(--dark-red);
+}
+
+#gallery .gallery-part-two .grid {
+  position: relative;
+}
+
+#gallery .gallery-part-two .left {
+  display: flex;
+  align-items: flex-end;
+}
+
 .hustling-vertical {
   font-family: 'Humane-Regular';
   font-size: 18.75rem;
   font-weight: 400;
   text-transform: uppercase;
   white-space: nowrap;
-  color: var(--dark-red);
+  color: var(--creme);
 
-  position: absolute;
-  bottom: 0;
-  left: 0;
   transform: translate(-2.2%, 100%) rotate(-90deg);
   transform-origin: top left;
 }
-
-
-
