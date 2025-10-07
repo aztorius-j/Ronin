@@ -3,44 +3,12 @@
   gap: 2.75vw;
 }
 
-#gallery .red-circle {
-  width: 1020px;
-  height: 1020px;
-  border-radius: 50%;
-  background-color: var(--dark-red);
-  mix-blend-mode: difference;
-
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translate(50%, -50%);
-}
-
 #gallery .left {
   grid-column: 2 / 7;
 }
 
 #gallery .right {
   grid-column: 7 / 13;
-}
-
-h4 {
-  font-size: clamp(7rem, 15vw, 16.875rem);
-  color: var(--dark-red);
-  margin-bottom: 3%;
-}
-
-h4 b {
-  mix-blend-mode: overlay;
-}
-
-#gallery .red-paragraph {
-  max-width: 48rem;
-  margin-bottom: 2rem;
-}
-
-#gallery a {
-  mix-blend-mode: multiply;
 }
 
 #gallery .gallery-wrapper {
@@ -63,14 +31,47 @@ h4 b {
 
 #gallery .gallery-part-one .left {
   align-self: flex-start;
-  position: sticky;           /* bude treba odstrániť po implementácii GSAP */
-  top: min(6.375rem, 6vw);
+  position: relative;
+  /* top: min(6.375rem, 6vw); */
+  isolation: isolate;
 }
 
 #gallery .gallery-part-one .right {
   position: relative;
   bottom: min(9px, .5vw);
   margin-bottom: min(-9px, -0.5vw);
+}
+
+h4 {
+  font-size: clamp(7rem, 15vw, 16.875rem);
+  color: var(--dark-red);
+  margin-bottom: 3%;
+}
+
+h4 b {
+  mix-blend-mode: overlay;
+}
+
+#gallery .red-paragraph {
+  max-width: 48rem;
+  margin-bottom: 2rem;
+}
+
+#gallery a {
+  mix-blend-mode: multiply;
+}
+
+#gallery .red-circle {
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  background-color: var(--dark-red);
+  mix-blend-mode: difference;
+
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
 }
 
 /* PART TWO */
@@ -81,6 +82,7 @@ h4 b {
 }
 
 #gallery .gallery-part-two .grid {
+  padding: 0 2vw;
   position: relative;
 }
 
@@ -91,7 +93,7 @@ h4 b {
 
 .hustling-vertical {
   font-family: 'Humane-Regular';
-  font-size: 18.75rem;
+  font-size: clamp(10rem, 16vw, 18.75rem);
   font-weight: 400;
   text-transform: uppercase;
   white-space: nowrap;
