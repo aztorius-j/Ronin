@@ -15,7 +15,23 @@
   content: url("/img/black-arrow-right-hover.svg");
 }
 
+#testimonials .testimonials-container {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  overflow: hidden;
+  transform: translateX(-49vw);
+}
+
+#testimonials .inner-slider {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2vw;
+  will-change: transform;
+}
+
 #testimonials .testimonial {
+  width: 47vw;
   height: 25rem;
   padding: 2.125rem;
   grid-column: span 6;
@@ -23,6 +39,7 @@
 
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
 }
 
 #testimonials .star {

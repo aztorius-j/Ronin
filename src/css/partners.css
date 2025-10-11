@@ -3,20 +3,12 @@
   background-color: rgb(var(--black));
 }
 
-#partners .grid,
-#testimonials .grid {
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: auto 1fr;
-  row-gap: 2vw;
-  column-gap: 2%;
-}
-
 #partners .headline,
 #testimonials .headline {
-  grid-column: 1 / 13;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  margin-bottom: 2vw;
 }
 
 h5 {
@@ -35,8 +27,7 @@ h5 {
   content: url("/img/white-arrow-right-hover.svg");
 }
 
-#partners .partners-container,
-#testimonials .testimonials-container {
+#partners .partners-container {
   grid-column: 1 / 13;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
