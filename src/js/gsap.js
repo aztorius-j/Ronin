@@ -8,7 +8,7 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 gsap.registerPlugin(ScrollTrigger,ScrollSmoother);
 
 ScrollSmoother.create({
-  smooth: 1.75,      /* DOLADIŤ */
+  smooth: 1.75,
   effects: true,
 });
 
@@ -71,14 +71,12 @@ ScrollTrigger.create({
   onUpdate: (self) => {
     const v = gsap.utils.clamp(-2000, 2000, self.getVelocity());
 
-    // základná odchýlka pre 1 index (vo vw); kladné pri scrolle dole
     const baseDeltaVW = gsap.utils.clamp(
       -MAX_PER_INDEX_VW,
       MAX_PER_INDEX_VW,
       v / SPEED_SCALE
     );
 
-    // nastav odchýlku podla indexu; prvý obrázok (i=0) zostáva
     gsap.to(imgs, {
       y: (i) => `${i * baseDeltaVW}vw`,
       duration: 0.44,
@@ -86,7 +84,6 @@ ScrollTrigger.create({
       overwrite: 'auto'
     });
 
-    // keď sa scroll takmer zastaví, vráť na baseline
     if (Math.abs(v) < STOP_THRESHOLD) {
       gsap.to(imgs, {
         y: '0vw',

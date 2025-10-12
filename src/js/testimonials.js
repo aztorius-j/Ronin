@@ -1,55 +1,5 @@
-const fallbackReviews = [
-  {
-    authorAttribution: {
-      displayName: 'Ar',
-    },
-    rating: 5,
-    publishTime: 'one year ago',
-    originalText: {
-      text: "This place is fantastic! It's delicious and the staff is friendly and attentive. I really enjoyed my time here. The coffee is amazing!"
-    }
-  },
-  {
-    authorAttribution: {
-      displayName: 'Alexandra Pera',
-    },
-    rating: 5,
-    publishTime: 'two years ago',
-    originalText: {
-      text: "Nice cozy and modern cafe with excellent coffee and a garden/terrace in the back. They serve vegan sweet and salty pastries from Krafin. Nice and kind barista. Definitely recommend!"
-    }
-  },
-  {
-    authorAttribution: {
-      displayName: 'Dan Brookes',
-    },
-    rating: 5,
-    publishTime: 'one month ago',
-    originalText: {
-      text: "Really nice and quiet coffee shop; they do a simple thing very well."
-    }
-  },
-  {
-    authorAttribution: {
-      displayName: 'Olesia Skibinska',
-    },
-    rating: 5,
-    publishTime: 'one year ago',
-    originalText: {
-      text: "Currently my favorite coffee place in Prague. The best batch I have had in ages, even with constantly growing numbers of cafes in Vinohrady. The staff is very kind and passionate about their craft. Also, the terrace is a hidden gem!"
-    }
-  },
-  {
-    authorAttribution: {
-      displayName: 'Milan Straka',
-    },
-    rating: 5,
-    publishTime: 'two years ago',
-    originalText: {
-      text: "Coffe here is absolutely must! Excellent doubleshot or batchbrew is a standart here. Really nice place to be. One of the best in Czech. Iconic garden, see you soon!!"
-    }
-  }
-];
+const projectData = await fetch('/project-data.json', {cache: 'no-cache'}).then(res => res.json());
+const {fallbackReviews} = projectData;
 
 const placeId = 'ChIJ1bBA246VC0cRfdbmYb9lbto',
       apiKey = import.meta.env.VITE_GOOGLE_API_KEY,
@@ -58,7 +8,8 @@ const placeId = 'ChIJ1bBA246VC0cRfdbmYb9lbto',
       testimonialSlider = document.querySelector('#testimonials .inner-slider'),
       TRANSITION = 'transform .3s ease-in-out',
       finalTestimonialsArray = [];
-let   isAnimating = false;
+let   isAnimating = false,
+      shiftMultiplier = .326666666666;
 
 
 // FUNCTIONS
@@ -70,7 +21,7 @@ const formatDate = (time) => {
   return `${day}-${month}-${year}`;
 };
 
-const generateTestimonial = (name, rating, date, review) => {
+const createTestimonial = (name, rating, date, review) => {
   const testimonial = document.createElement('div'),
         starsBox = document.createElement('div'),
         star = document.createElement('img'),
@@ -89,7 +40,7 @@ const generateTestimonial = (name, rating, date, review) => {
   nameSpan.classList.add('name');
   dateSpan.classList.add('date');
 
-  reviewParagraph.textContent = review;
+  reviewParagraph.textContent = shortenText(review);
   nameSpan.textContent = name;
   dateSpan.textContent = date;
 
@@ -106,7 +57,7 @@ const generateTestimonial = (name, rating, date, review) => {
   testimonialSlider.appendChild(testimonial);
 };
 
-const getReviews = (data) => {
+const generateReviews = (data) => {
   const reviews = data.reviews;
 
   reviews.forEach((review) => {
@@ -121,7 +72,7 @@ const getReviews = (data) => {
 
   finalTestimonialsArray.forEach((testimonial) => {
     const [name, rating, date, text] = [testimonial.authorAttribution.displayName, testimonial.rating, formatDate(testimonial.publishTime), testimonial.originalText.text];
-    generateTestimonial(name, rating, date, text);
+    createTestimonial(name, rating, date, text);
   });
 };
 
@@ -129,7 +80,7 @@ const slide = (direction) => {
   if (isAnimating) return;
   isAnimating = true;
 
-  const shift = window.innerWidth * 0.49;
+  const shift = window.innerWidth * shiftMultiplier;
 
   if (direction === 1) {
     testimonialSlider.style.transition = TRANSITION;
@@ -137,34 +88,38 @@ const slide = (direction) => {
 
     testimonialSlider.addEventListener('transitionend', function onEnd() {
       testimonialSlider.removeEventListener('transitionend', onEnd);
-      // presuň prvý testimonial na koniec
       testimonialSlider.appendChild(testimonialSlider.firstElementChild);
-      // reset bez animácie
       testimonialSlider.style.transition = 'none';
       testimonialSlider.style.transform = 'translateX(0)';
-      // force reflow
       void testimonialSlider.offsetWidth;
-      // späť animáciu pre ďalší klik
       testimonialSlider.style.transition = TRANSITION;
       isAnimating = false;
     }, { once: true });
 
   } else {
-    // najprv presuň posledný na začiatok a nastav východzí offset
     testimonialSlider.style.transition = 'none';
     testimonialSlider.insertBefore(
       testimonialSlider.lastElementChild,
       testimonialSlider.firstElementChild
     );
     testimonialSlider.style.transform = `translateX(-${shift}px)`;
-    void testimonialSlider.offsetWidth; // reflow
-    // potom animuj späť na 0
+    void testimonialSlider.offsetWidth;
     testimonialSlider.style.transition = TRANSITION;
     testimonialSlider.style.transform = 'translateX(0)';
     testimonialSlider.addEventListener('transitionend', () => {
       isAnimating = false;
     }, { once: true });
   }
+};
+
+const shortenText = (text) => {
+  return text.length > 235 ? text.slice(0, 235) + '...' : text;
+};
+
+const updateShiftMultiplier = () => {
+  shiftMultiplier = window.innerWidth < 1200 ? .98 
+                   : window.innerWidth < 2280 ? .49 
+                   : .326666666666;
 };
 
 
@@ -176,10 +131,12 @@ fetch(`https://places.googleapis.com/v1/places/${placeId}`, {
   }
 })
   .then(res => res.json())
-  .then(getReviews)
+  .then(generateReviews)
   .catch(console.error);
 
 
 // EVENT LISTENERS
 arrowRight.addEventListener('click', () => slide(1));
 arrowLeft.addEventListener('click', () => slide(-1));
+window.addEventListener('resize', updateShiftMultiplier);
+updateShiftMultiplier();

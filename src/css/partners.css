@@ -28,36 +28,26 @@ h5 {
 }
 
 #partners .partners-container {
-  grid-column: 1 / 13;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 2%;
+  position: relative;
+  transform: translateX(-27vw);
+}
+
+#partners .small-box,
+#partners .large-box {
+  border: 2px solid rgb(var(--black));
+  transition: all .3s ease-in-out;
 }
 
 #partners .small-box {
-  grid-column: 1 / 4;
+  width: 25vw;
 }
 
 #partners .large-box {
-  grid-column: 4 / 10;
-}
-
-#partners .partners-container .small-box:last-of-type {
-  grid-column: 10 / 13;
+  width: 42vw;
 }
 
 #partners .partner-img {
   height: 27.375rem;
-}
-
-#partners .small-box .partner-img {
-  height: 27.375rem;
-  background: url('/img/partner01.webp') center center / cover no-repeat;
-}
-
-#partners .large-box .partner-img {
-  height: 27.375rem;
-  background: url('/img/partner02.webp') center center / cover no-repeat;
 }
 
 #partners .partner-info {
@@ -74,37 +64,39 @@ h5 {
   text-transform: uppercase;
   color: rgb(var(--black));
   margin-bottom: .5rem;
+  white-space: nowrap;
 }
 
-#partners .partner-insta {
+#partners .partner-insta a {
   font-family: 'GTWalsheimPro-Medium';
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 110%;
   color: rgb(var(--black));
+  white-space: nowrap;
 }
 
 
 @media screen and (max-width: 2280px) {
-  #partners .partners-container .small-box:last-of-type {
-    display: none;
+  #partners .partners-container {
+    transform: translateX(-34vw);
   }
 
   #partners .small-box {
-    grid-column: 1 / 5;
+    width: 32vw;
   }
 
   #partners .large-box {
-    grid-column: 5 / 13;
+    width: 62vw;
   }
 }
 
 @media screen and (max-width: 1360px) {
-  #partners .small-box {
-    display: none;
+  #partners .partners-container {
+    transform: translateX(-68vw);
   }
 
   #partners .large-box {
-    grid-column: 1 / 13;
+    width: 96vw;
   }
 }
