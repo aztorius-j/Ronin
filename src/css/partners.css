@@ -36,6 +36,7 @@ h5 {
 #partners .large-box {
   border: 2px solid rgb(var(--black));
   transition: all .3s ease-in-out;
+  will-change: transform;
 }
 
 #partners .small-box {

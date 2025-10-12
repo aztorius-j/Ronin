@@ -36,7 +36,7 @@ img.header-logo {
 
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .info-panel-box {
@@ -44,19 +44,17 @@ img.header-logo {
   flex-shrink: 0;
 }
 
-.icon-container,
-.info-container {
+.icon-container {
   padding-right: .75rem;
 }
 
 img.info-panel-icon {
-  width: 1.4rem;
+  width: auto;
   height: 1.4rem;
 }
 
-.weather .info-container p {
-  min-width: 5rem;
-  max-width: 6.25rem;
+#weather-interpretation {
+  white-space: pre-line;
 }
 
 .main-info {

@@ -15,9 +15,17 @@ let   isAnimating = false,
 // FUNCTIONS
 const formatDate = (time) => {
   if (!/^\d/.test(time)) return time;
-  const year = time.slice(0, 4),
+
+  const currentYear = new Date().getFullYear(),
+        year = parseInt(time.slice(0, 4)),
         month = time.slice(5, 7),
-        day = time.slice(8, 10);
+        day = time.slice(8, 10),
+        diff = currentYear - year;
+
+  if (diff === 1) return 'one year ago';
+  if (diff === 2) return 'two years ago';
+  if (diff > 2) return `${diff} years ago`;
+
   return `${day}-${month}-${year}`;
 };
 

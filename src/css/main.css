@@ -53,3 +53,19 @@ a.red-button {
 .arrow-right {
   cursor: pointer;
 }
+
+
+@media screen and (max-width: 1000px) {
+  #smooth-wrapper {
+    display: none;
+  }
+
+  body {
+    overflow: hidden;
+  }
+
+  .mobile-no {
+    height: 100vh;
+    background: url('/img/mobile-no.png') center center / cover no-repeat;
+  }
+}
