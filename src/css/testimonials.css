@@ -38,11 +38,14 @@
 #testimonials .testimonial {
   width: 30.6666666666vw;
   height: 25rem;
-  padding: 2.125rem;
-  grid-column: span 6;
-  background-color: rgb(var(--black));
-  border: 2px solid var(--dark-red);
+  padding: 2px;
+  background-color: rgb(var(--dark-red));
+}
 
+#testimonials .testimonial-black-bg {
+  height: 100%;
+  padding: 2.125rem;
+  background-color: rgb(var(--black));
   display: flex;
   flex-direction: column;
   flex-shrink: 0;

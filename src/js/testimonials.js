@@ -31,6 +31,7 @@ const formatDate = (time) => {
 
 const createTestimonial = (name, rating, date, review) => {
   const testimonial = document.createElement('div'),
+        blackBg = document.createElement('div'),
         starsBox = document.createElement('div'),
         star = document.createElement('img'),
         reviewParagraph = document.createElement('p'),
@@ -39,6 +40,7 @@ const createTestimonial = (name, rating, date, review) => {
         dateSpan = document.createElement('span');
 
   testimonial.classList.add('testimonial'); 
+  blackBg.classList.add('testimonial-black-bg');
   starsBox.setAttribute('aria-label', `Hodnotenie: ${rating} z 5`);
   star.classList.add('star');
   star.alt = 'star';
@@ -56,11 +58,12 @@ const createTestimonial = (name, rating, date, review) => {
     starsBox.appendChild(star.cloneNode(true));
   }
 
-  testimonial.appendChild(starsBox);
-  testimonial.appendChild(reviewParagraph);
+  blackBg.appendChild(starsBox);
+  blackBg.appendChild(reviewParagraph);
   sourceBox.appendChild(nameSpan);
   sourceBox.appendChild(dateSpan);
-  testimonial.appendChild(sourceBox);
+  blackBg.appendChild(sourceBox);
+  testimonial.appendChild(blackBg);
 
   testimonialSlider.appendChild(testimonial);
 };
