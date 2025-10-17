@@ -44,6 +44,7 @@ const galleryScrollTrigger = () => {
       start: 'top bottom',
       endTrigger: galleryPartTwo,
       end: 'top bottom',
+      pin: false,
       scrub: true,
       invalidateOnRefresh: true
     }
