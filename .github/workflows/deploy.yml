@@ -32,14 +32,14 @@ jobs:
           chmod 600 key.pem
 
       - name: Clean assets folder before deploy
-        run: ssh -i key.pem -o StrictHostKeyChecking=no -p 29510 ${{ secrets.WEBSUPPORT_USER }}@${{ secrets.WEBSUPPORT_HOST }} "rm -rf studiokontura.com/sub/ronin/assets"
+        run: ssh -i key.pem -o StrictHostKeyChecking=no -p 29845 ${{ secrets.WEBSUPPORT_USER }}@${{ secrets.WEBSUPPORT_HOST }} "rm -rf studiokontura.com/sub/ronin/assets"
 
       - name: Deploy via SCP
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.WEBSUPPORT_HOST }}
           username: ${{ secrets.WEBSUPPORT_USER }}
-          port: 29510
+          port: 29845
           key: ${{ secrets.WEBSUPPORT_SSH_KEY }}
           source: "dist/**"
           target: "studiokontura.com/sub/ronin"
