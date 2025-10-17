@@ -133,6 +133,12 @@ const updateShiftMultiplier = () => {
                    : .326666666666;
 };
 
+if (import.meta.env.VITE_GOOGLE_API_KEY) {
+  console.log('Google API key hash:', import.meta.env.VITE_GOOGLE_API_KEY.slice(0, 10) + '...');
+} else {
+  console.warn('Google API key is missing!');
+}
+
 
 // FETCH
 fetch(`https://places.googleapis.com/v1/places/${placeId}`, {
