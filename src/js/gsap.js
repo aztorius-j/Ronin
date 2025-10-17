@@ -19,13 +19,13 @@ ScrollSmoother.create({
 
 
 // *** GALLERY ***
-const galleryScrollTrigger = () => {
-  const gallery = document.getElementById('gallery'),
+const gallery = document.getElementById('gallery'),
       galleryStickyElement = document.querySelector('#gallery .gallery-part-one .left'),
       galleryPartTwo = document.querySelector('#gallery .gallery-part-two'),
-      redCircle = document.querySelector('#gallery .red-circle');
+      redCircle = document.querySelector('#gallery .red-circle'),
+      imgs = gsap.utils.toArray('#gallery img');
 
-  if (!gallery || !galleryPartTwo || !galleryStickyElement || !redCircle) return;
+const galleryScrollTrigger = () => {
 
   ScrollTrigger.create({
     trigger: galleryStickyElement,
@@ -35,7 +35,7 @@ const galleryScrollTrigger = () => {
     pin: true,
     pinSpacing: false,
     scrub: true,
-    invalidateOnRefresh: true
+    invalidateOnRefresh: true,
   });
 
   const timeLine = gsap.timeline({
@@ -60,7 +60,6 @@ const galleryScrollTrigger = () => {
   );
 }
 
-const imgs = gsap.utils.toArray('#gallery img');
 const MAX_PER_INDEX_VW = 0.3;   // jemnosť efektu (zvýš = výraznejšie)
 const SPEED_SCALE      = 1800;   // vyššie = jemnejšia odozva na rýchlosť
 const STOP_THRESHOLD   = 20;    // kedy to berieme ako takmer stojí
@@ -98,7 +97,7 @@ ScrollTrigger.create({
 
 
 // DOM Content Loaded
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   galleryScrollTrigger();
 });
 
