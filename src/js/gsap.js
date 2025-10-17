@@ -33,9 +33,7 @@ const galleryScrollTrigger = () => {
     endTrigger: galleryPartTwo,
     end: 'top bottom',
     pin: true,
-    pinSpacing: false,
-    scrub: true,
-    invalidateOnRefresh: true,
+    pinSpacing: false
   });
 
   const timeLine = gsap.timeline({
@@ -43,10 +41,7 @@ const galleryScrollTrigger = () => {
       trigger: gallery,
       start: 'top bottom',
       endTrigger: galleryPartTwo,
-      end: 'top bottom',
-      pin: false,
-      scrub: true,
-      invalidateOnRefresh: true
+      end: 'top bottom'
     }
   });
 
