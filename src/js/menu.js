@@ -75,3 +75,5 @@ menuNavigation.addEventListener('click', (event) => {
   categorySelection(category);
   generateCategoryItems(category);
 });
+
+document.dispatchEvent(new Event('menu:updated'));

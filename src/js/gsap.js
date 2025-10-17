@@ -1,5 +1,5 @@
 // =========================
-// INITIALIZE LENIS AND GSAP
+// INITIALIZE GSAP
 // =========================
 
 import { gsap } from "gsap";
@@ -32,10 +32,7 @@ const galleryScrollTrigger = () => {
     start: 'center center',
     endTrigger: galleryPartTwo,
     end: 'top bottom',
-    pin: true,
-    pinSpacing: true,
-    scrub: true,
-    invalidateOnRefresh: true,
+    pin: true
   });
 
   const timeLine = gsap.timeline({
@@ -58,7 +55,7 @@ const galleryScrollTrigger = () => {
       ease: 'none'
     }
   );
-}
+};
 
 const MAX_PER_INDEX_VW = 0.3;   // jemnosť efektu (zvýš = výraznejšie)
 const SPEED_SCALE      = 1800;   // vyššie = jemnejšia odozva na rýchlosť
@@ -96,12 +93,17 @@ ScrollTrigger.create({
 });
 
 
-// DOM Content Loaded
+// EVENT LISTENERS
 document.addEventListener('DOMContentLoaded', () => {
   galleryScrollTrigger();
 });
 
-// Unified resize handler
 window.addEventListener('resize', () => {
   ScrollTrigger.refresh();
+});
+
+document.addEventListener('menu:updated', () => {
+  requestAnimationFrame(() =>
+    requestAnimationFrame(() => ScrollTrigger.refresh())
+  );
 });
