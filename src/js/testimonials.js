@@ -1,7 +1,5 @@
-const projectData = await fetch('/project-data.json', { cache: 'no-cache' })
-  .then(res => (res.ok ? res.json() : { fallbackReviews: [] }))
-  .catch(() => ({ fallbackReviews: [] }));
-const { fallbackReviews = [] } = projectData || {};
+const projectData = await fetch('/project-data.json', {cache: 'no-cache'}).then(res => res.json());
+const {fallbackReviews} = projectData;
 
 const placeId = 'ChIJ1bBA246VC0cRfdbmYb9lbto',
       apiKey = import.meta.env.VITE_GOOGLE_API_KEY,
@@ -71,26 +69,22 @@ const createTestimonial = (name, rating, date, review) => {
 };
 
 const generateReviews = (data) => {
-  const reviews = Array.isArray(data?.reviews) ? data.reviews : [];
+  const reviews = data.reviews;
 
-  for (const review of reviews) {
-    const rating = Math.round(Number(review?.rating ?? 0));
-    if (rating < 4) continue;
+  reviews.forEach((review) => {
+    if (review.rating < 4) return;
     finalTestimonialsArray.push(review);
-  }
+  });
 
   if (finalTestimonialsArray.length < 5) {
     const missing = 5 - finalTestimonialsArray.length;
     finalTestimonialsArray.push(...fallbackReviews.slice(0, missing));
   }
 
-  for (const t of finalTestimonialsArray) {
-    const name   = t.authorAttribution?.displayName ?? t.name ?? 'Anonymous';
-    const rating = Math.round(Number(t.rating ?? 5));
-    const date   = formatDate(t.publishTime ?? t.date ?? '');
-    const text   = t.originalText?.text ?? t.text ?? '';
+  finalTestimonialsArray.forEach((testimonial) => {
+    const [name, rating, date, text] = [testimonial.authorAttribution.displayName, testimonial.rating, formatDate(testimonial.publishTime), testimonial.originalText.text];
     createTestimonial(name, rating, date, text);
-  }
+  });
 };
 
 const slide = (direction) => {
@@ -139,37 +133,17 @@ const updateShiftMultiplier = () => {
                    : .326666666666;
 };
 
-const FIELD_MASK = [
-  'reviews.rating',
-  'reviews.publishTime',
-  'reviews.authorAttribution.displayName',
-  'reviews.originalText.text'
-].join(',');
 
-if (apiKey) {
-  try {
-    const res = await fetch(`https://places.googleapis.com/v1/places/${placeId}`, {
-      headers: {
-        'X-Goog-Api-Key': apiKey,
-        'X-Goog-FieldMask': FIELD_MASK
-      }
-    });
-
-    if (!res.ok) {
-      const body = await res.text().catch(() => '');
-      throw new Error(`Places HTTP ${res.status}: ${body}`);
-    }
-
-    const data = await res.json();
-    generateReviews(data);
-  } catch (err) {
-    console.warn('Places API zlyhalo, idem na fallback:', err);
-    generateReviews({ reviews: [] });
+// FETCH
+fetch(`https://places.googleapis.com/v1/places/${placeId}`, {
+  headers: {
+    "X-Goog-Api-Key": apiKey,
+    "X-Goog-FieldMask": "reviews"
   }
-} else {
-  console.warn('Places API key chýba (import.meta.env.VITE_GOOGLE_API_KEY). Použijem fallback recenzie.');
-  generateReviews({ reviews: [] });
-}
+})
+  .then(res => res.json())
+  .then(generateReviews)
+  .catch(() => generateReviews({ reviews: [] }));
 
 
 // EVENT LISTENERS
