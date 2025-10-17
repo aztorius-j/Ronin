@@ -97,7 +97,7 @@ ScrollTrigger.create({
 
 
 // DOM Content Loaded
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
   galleryScrollTrigger();
 });
 
