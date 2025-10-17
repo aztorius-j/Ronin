@@ -2,7 +2,8 @@ name: Deploy to Websupport
 
 on:
   push:
-    branches: [ "deploy" ]
+    branches:
+      - deploy
 
 concurrency:
   group: deploy
@@ -35,13 +36,13 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
 
       - name: Add Websupport host key
-        run: ssh-keyscan -p 27171 -H "${{ secrets.WEBSUPPORT_HOST }}" >> ~/.ssh/known_hosts
+        run: ssh-keyscan -p 27311 -H "${{ secrets.WEBSUPPORT_HOST }}" >> ~/.ssh/known_hosts
 
       - name: Deploy via rsync
         run: |
           RSYNC_SRC="dist/"
-          RSYNC_DEST="${{ secrets.WEBSUPPORT_USER }}@${{ secrets.WEBSUPPORT_HOST }}:aztorsound.com/web"
-          rsync -az --delete -e "ssh -p 27171 -i ~/.ssh/id_ed25519" "$RSYNC_SRC" "$RSYNC_DEST"
+          RSYNC_DEST="${{ secrets.WEBSUPPORT_USER }}@${{ secrets.WEBSUPPORT_HOST }}:studiokontura.com/sub/ronin"
+          rsync -az --delete -e "ssh -p 27311 -i ~/.ssh/id_ed25519" "$RSYNC_SRC" "$RSYNC_DEST"
 
       - name: Cleanup
         run: rm -f ~/.ssh/id_ed25519
