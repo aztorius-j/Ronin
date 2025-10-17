@@ -19,13 +19,12 @@ ScrollSmoother.create({
 
 
 // *** GALLERY ***
-const gallery = document.getElementById('gallery'),
+const galleryScrollTrigger = () => {
+  const gallery = document.getElementById('gallery'),
       galleryStickyElement = document.querySelector('#gallery .gallery-part-one .left'),
       galleryPartTwo = document.querySelector('#gallery .gallery-part-two'),
-      redCircle = document.querySelector('#gallery .red-circle'),
-      imgs = gsap.utils.toArray('#gallery img');
+      redCircle = document.querySelector('#gallery .red-circle');
 
-const galleryScrollTrigger = () => {
   if (!gallery || !galleryPartTwo || !galleryStickyElement || !redCircle) return;
 
   ScrollTrigger.create({
@@ -61,6 +60,7 @@ const galleryScrollTrigger = () => {
   );
 }
 
+const imgs = gsap.utils.toArray('#gallery img');
 const MAX_PER_INDEX_VW = 0.3;   // jemnosť efektu (zvýš = výraznejšie)
 const SPEED_SCALE      = 1800;   // vyššie = jemnejšia odozva na rýchlosť
 const STOP_THRESHOLD   = 20;    // kedy to berieme ako takmer stojí
