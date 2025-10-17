@@ -5,10 +5,6 @@ on:
     branches:
       - deploy
 
-concurrency:
-  group: deploy
-  cancel-in-progress: true
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -21,7 +17,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -29,20 +24,24 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Prepare SSH key
+      - name: Create SSH key
         run: |
-          mkdir -p ~/.ssh
-          printf "%s" "${{ secrets.WEBSUPPORT_SSH_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
+          echo "${{ secrets.WEBSUPPORT_SSH_KEY }}" > key.pem
+          chmod 600 key.pem
 
-      - name: Add Websupport host key
-        run: ssh-keyscan -p 27753 -H "${{ secrets.WEBSUPPORT_HOST }}" >> ~/.ssh/known_hosts
+      - name: Clean assets folder before deploy
+        run: ssh -i key.pem -o StrictHostKeyChecking=no -p 27753 ${{ secrets.WEBSUPPORT_USER }}@${{ secrets.WEBSUPPORT_HOST }} "rm -rf studiokontura.com/sub/ronin/assets"
 
-      - name: Deploy via rsync
-        run: |
-          RSYNC_SRC="dist/"
-          RSYNC_DEST="${{ secrets.WEBSUPPORT_USER }}@${{ secrets.WEBSUPPORT_HOST }}:studiokontura.com/sub/ronin"
-          rsync -az --delete -e "ssh -p 27753 -i ~/.ssh/id_ed25519" "$RSYNC_SRC" "$RSYNC_DEST"
+      - name: Deploy via SCP
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.WEBSUPPORT_HOST }}
+          username: ${{ secrets.WEBSUPPORT_USER }}
+          port: 27753
+          key: ${{ secrets.WEBSUPPORT_SSH_KEY }}
+          source: "dist/**"
+          target: "studiokontura.com/sub/ronin"
+          strip_components: 1
 
-      - name: Cleanup
-        run: rm -f ~/.ssh/id_ed25519
+      - name: Remove SSH key
+        run: rm key.pem
