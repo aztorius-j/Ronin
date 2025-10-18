@@ -26,9 +26,9 @@ const aboutUs = document.getElementById('about-us'),
 const aboutUsScrollTrigger = () => {
   gsap.fromTo(
     aboutUsparallaxImg,
-    { y: 50 },
+    { y: -20 },
     {
-      y: -50,
+      y: -70,
       ease: 'none',
       scrollTrigger: {
         trigger: aboutUs,
@@ -52,7 +52,7 @@ const experienceScrollTrigger = () => {
     experienceLeftImages,
     { x: 0 },
     {
-      x: -140,
+      x: -150,
       ease: 'none',
       scrollTrigger: {
         trigger: experienceLeftImages[0],
@@ -82,7 +82,7 @@ const experienceScrollTrigger = () => {
     experienceRightImages,
     { x: 0 },
     {
-      x: 140,
+      x: 150,
       ease: 'none',
       scrollTrigger: {
         trigger: experienceRightImages[0],
