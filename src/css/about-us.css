@@ -11,11 +11,14 @@
   margin: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  overflow: hidden;
 }
 
-#about-us figure img:first-of-type {
+#about-us .parallax-img {
   position: relative;
   left: 1px;
+  transform: scale(1.2);
+  will-change: transform;
 }
 
 #about-us figure img:nth-of-type(2) {

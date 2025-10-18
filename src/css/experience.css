@@ -33,34 +33,40 @@
 #experience .left img {
   display: block;
   margin-left: auto;
+  z-index: 2;
+}
+
+#experience .center img {
+  z-index: 1;
 }
 
 #experience .right img {
   display: block;
+  z-index: 2;
 }
 
 #experience .left img:nth-of-type(1) {
   position: absolute;
   top: 20.5%;
-  right: 35%;
+  right: 5%;
 }
 
 #experience .left img:nth-of-type(2) {
   position: absolute;
   top: 85%;
-  left: 28%;
+  left: 55%;
 }
 
 #experience .right img:nth-of-type(1) {
   position: absolute;
   top: 8.5%;
-  left: 35%;
+  left: 5%;
 }
 
 #experience .right img:nth-of-type(2) {
   position: absolute;
   top: 89%;
-  right: 29%;
+  right: 55%;
 }
 
 #experience h3 {

@@ -95,6 +95,8 @@
     <!-- LANDING PAGE -->
     <section id="landing-page">
 
+    <div class="landing-page-background" data-speed=".75"></div>
+
       <h1>FROM STREET<br>HUSTLE TO<br>COFFEE CULTURE</h1>
       <div class="flex-container">
         <div class="container">
@@ -110,7 +112,7 @@
       <div class="max-width-container">
 
         <figure>
-          <img src="img/ronin.webp" alt="Ronin">
+          <img src="img/ronin.webp" class="parallax-img" alt="Ronin">
           <img src="img/portafilter.webp" alt="portafilter">
         </figure>
 
@@ -236,15 +238,19 @@
         <h3>Naše signature menu</h3>
 
         <div class="menu-sidebar">
-          <h6>No compromise</h6>
-          <p class="black-paragraph">
-            Všetko robíme ručne, kvalitné a bez kompromisov. Menu meníme podľa sezóny a nálady. Káve dominujú signature nápoje a filter z európskych pražiarní.
-          </p>
-          <nav class="menu-navigation"></nav>
+          <div class="no-compromise">
+            <h6>No compromise</h6>
+            <p class="black-paragraph">
+              Všetko robíme ručne, kvalitne a bez kompromisov. Káve dominujú signature nápoje a filter z európskych pražiarní.
+            </p>
+          </div>
+          <nav class="menu-navigation">
+            <ul></ul>
+          </nav>
         </div>
 
         <div class="menu-content">
-          <h6>Ice drinks</h6>
+          <!-- <h6>Ice drinks</h6> -->
           <img src="img/menu-img.webp" alt="menu image">
           <ul></ul>
         </div>
@@ -407,6 +413,7 @@
   </footer>
 
   <script src="src/js/gsap.js" type="module"></script>
+  <script src="src/js/landingpage.js" type="module"></script>
   <script src="src/js/weather.js" type="module"></script>
   <script src="src/js/menu.js" type="module"></script>
   <script src="src/js/partners.js" type="module"></script>

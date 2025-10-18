@@ -18,6 +18,83 @@ ScrollSmoother.create({
 // =========================
 
 
+// *** ABOUT US ***
+const aboutUs = document.getElementById('about-us'),
+      aboutUsparallaxImg = document.querySelector('#about-us .parallax-img'),
+      aboutUsHeadline = document.querySelector('#about-us .headline');
+
+const aboutUsScrollTrigger = () => {
+  gsap.fromTo(
+    aboutUsparallaxImg,
+    { y: 50 },
+    {
+      y: -50,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: aboutUs,
+        start: 'top bottom',
+        endTrigger: aboutUsHeadline,
+        end: 'top top',
+        scrub: true
+      }
+    }
+  );
+};
+
+// *** EXPERIENCE ***
+const experienceLeftImages = Array.from(document.querySelectorAll('#experience .left img')),
+      experienceRightImages = Array.from(document.querySelectorAll('#experience .right img')),
+      experienceCenterImage = document.querySelector('#experience .center img'),
+      experienceHeadline = document.querySelector('#experience h3');
+
+const experienceScrollTrigger = () => {
+  gsap.fromTo(
+    experienceLeftImages,
+    { x: 0 },
+    {
+      x: -140,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: experienceLeftImages[0],
+        start: 'top bottom',
+        endTrigger: experienceHeadline,
+        end: 'top top',
+        scrub: true
+      }
+    }
+  );
+  gsap.fromTo(
+    experienceCenterImage,
+    { scale: 1 },
+    {
+      scale: 1.25,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: experienceCenterImage,
+        start: 'top bottom',
+        endTrigger: experienceHeadline,
+        end: 'top top',
+        scrub: true
+      }
+    }
+  );
+  gsap.fromTo(
+    experienceRightImages,
+    { x: 0 },
+    {
+      x: 140,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: experienceRightImages[0],
+        start: 'top bottom',
+        endTrigger: experienceHeadline,
+        end: 'top top',
+        scrub: true
+      }
+    }
+  )
+};
+
 // *** GALLERY ***
 const gallery = document.getElementById('gallery'),
       galleryStickyElement = document.querySelector('#gallery .gallery-part-one .left'),
@@ -95,6 +172,8 @@ ScrollTrigger.create({
 
 // EVENT LISTENERS
 document.addEventListener('DOMContentLoaded', () => {
+  aboutUsScrollTrigger();
+  experienceScrollTrigger();
   galleryScrollTrigger();
 });
 
