@@ -7,25 +7,16 @@ let   activeMenuCategory;
 
 
 // FUNCTIONS
-const createMenuCategory = (data) => {
-  const liElement = document.createElement('li'),
-        anchorElement = document.createElement('a'),
-        categoryIcon = document.createElement('img'),
-        categoryName = document.createElement('span'),
-        arrowIcon = document.createElement('img');
-    
-  anchorElement.href = '#';
-  categoryIcon.src = data.icon;
-  categoryIcon.alt = 'icon';
-  categoryName.textContent = data.heading;
-  arrowIcon.src = '/img/menu-arrow.png';
-  arrowIcon.alt = 'arrow';
-  anchorElement.appendChild(categoryIcon);
-  anchorElement.appendChild(categoryName);
-  anchorElement.appendChild(arrowIcon);
-  liElement.appendChild(anchorElement);
-
-  return liElement;
+const createMenuCategory = (item) => {
+  const li = document.createElement('li');
+  li.innerHTML = `
+    <a href="#">
+      <img src="${item.icon}" alt="icon">
+      <span>${item.heading}</span>
+      <img src="/img/menu-arrow.png" alt="arrow">
+    </a>
+  `;
+  return li;
 };
 
 const generateMenuCategories = (array) => {

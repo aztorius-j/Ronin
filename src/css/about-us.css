@@ -10,17 +10,22 @@
 #about-us figure {
   margin: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   overflow: hidden;
+  position: relative;
 }
 
 #about-us .parallax-img {
+  max-width: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
   will-change: transform;
 }
 
 #about-us figure video {
-  position: relative;
-  right: 1px;
+  grid-column: 2 / 3;
 }
 
 #about-us .headline {
@@ -32,6 +37,10 @@
   font-size: clamp(7rem, 30vw, 36.75rem);
   text-align: center;
   color: var(--dark-red);
+}
+
+#about-us .red-paragraph {
+  font-size: clamp(1.5rem, 2.75vw, 2.25rem);
 }
 
 #about-us .headline img {
