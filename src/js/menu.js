@@ -24,6 +24,8 @@ const generateMenuCategories = (array) => {
     const menuElement = createMenuCategory(item);
     menuNavigationUl.appendChild(menuElement);
   });
+  console.log('[menu.js] Categories generated', performance.now());
+  document.dispatchEvent(new Event('menu:updated'));
 };
 
 const createCategoryItem = (item) => {
@@ -84,5 +86,3 @@ menuNavigationUl.addEventListener('click', (event) => {
   categorySelection(category);
   generateCategoryItems(category);
 });
-
-document.dispatchEvent(new Event('menu:updated'));

@@ -210,10 +210,12 @@ window.addEventListener('resize', () => {
 
 document.addEventListener('menu:updated', () => {
   refreshAfterLayout();
+  console.log('Document event listener - menu:updated', performance.now());
 });
 
 window.addEventListener('load', () => {
   refreshAfterLayout();
+  console.log('Window event listener: load', performance.now());
 });
 
 ScrollTrigger.addEventListener('refresh', () => {
