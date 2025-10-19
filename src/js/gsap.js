@@ -31,7 +31,7 @@ const refreshAfterLayout = (source) => {
       }
       ScrollSmoother.get()?.refresh();
       ScrollTrigger.refresh();
-      console.log('DONE via ', source, performance.now());
+      console.log('Last refresh after: ', source, performance.now());
     });
   });
 };
@@ -120,16 +120,18 @@ const experienceScrollTrigger = () => {
 
 // *** GALLERY ***
 const gallery = document.getElementById('gallery'),
-      galleryStickyElement = document.querySelector('#gallery .gallery-part-one .left'),
+      galleryPartOneLeft = document.querySelector('#gallery .gallery-part-one .left'),
+      StickyElement = document.querySelector('#gallery .gallery-part-one .sticky'),
       galleryPartTwo = document.querySelector('#gallery .gallery-part-two'),
+      redCircleContainer = document.querySelector('#gallery .circle-container'),
       redCircle = document.querySelector('#gallery .red-circle'),
       imgs = gsap.utils.toArray('#gallery img');
 
 const galleryScrollTrigger = () => {
 
   ScrollTrigger.create({
-    trigger: galleryStickyElement,
-    start: 'center center',
+    trigger: StickyElement,
+    start: () => window.innerHeight > StickyElement.getBoundingClientRect().height + 64 ? 'center center' : 'top-=32 top',
     endTrigger: galleryPartTwo,
     end: 'top bottom',
     pin: true
@@ -148,11 +150,11 @@ const galleryScrollTrigger = () => {
 
   timeLine.fromTo(
     redCircle,
-    {width: 0, height: 0},
+    {width: window.innerWidth / 10, height: window.innerWidth / 10},
     {
-      width: () => `${Math.hypot(window.innerWidth, window.innerHeight)}px`,
-      height: () => `${Math.hypot(window.innerWidth, window.innerHeight)}px`,
-      ease: 'none'
+      width: () => `${Math.hypot(window.innerWidth, galleryPartOneLeft.getBoundingClientRect().height)}px`,
+      height: () => `${Math.hypot(window.innerWidth, galleryPartOneLeft.getBoundingClientRect().height)}px`,
+      ease: 'power2.in'
     }
   );
 };
@@ -208,9 +210,9 @@ window.addEventListener('resize', () => {
 });
 
 document.addEventListener('menu:updated', () => {
-  refreshAfterLayout('document - menu:updated');
+  refreshAfterLayout('menu:updated');
 });
 
-window.addEventListener('load', () => {
-  refreshAfterLayout('window - load');
+document.addEventListener('gallery:updated', () => {
+  refreshAfterLayout('gallery:updated');
 });

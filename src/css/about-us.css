@@ -19,13 +19,15 @@
   max-width: 50%;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 1px;
   z-index: -1;
   will-change: transform;
 }
 
 #about-us figure video {
   grid-column: 2 / 3;
+  position: relative;
+  right: 1px;
 }
 
 #about-us .headline {

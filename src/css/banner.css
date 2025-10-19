@@ -1,16 +1,19 @@
+/* ONE */
+
 #banner {
   height: 100vh;
   background: url('/img/banner.webp') center center / cover no-repeat;
 }
 
+/* TWO */
+
 #banner-two {
-  height: 120vh;
   padding: 2vw 2vw 5vw 2vw;
   background: url('/img/banner2.webp') center center / cover no-repeat;
 }
 
 #banner-two .grid {
-  height: 100%;
+  min-height: 120vh;
   grid-template-columns: 3fr 6fr 3fr;
 }
 
@@ -32,7 +35,7 @@
 
 #banner-two .grid .gap {
   width: 100%;
-  height: 2.5rem;
+  height: 4rem;
 }
 
 #banner-two .grid .center  {
@@ -43,7 +46,7 @@
 
 #banner-two .grid .left,
 #banner-two .grid .right,
-#banner-two .grid .center span {
+#banner-two .grid .center {
   font-family: 'Humane-Bold';
   font-size: 3rem;
   font-weight: 700;
@@ -53,17 +56,12 @@
 }
 
 #banner-two .grid .center p {
-  font-family: 'GTWalsheimPro-Medium';
-  font-size: clamp(2.5rem, 3.4vw, 3rem);
-  font-weight: 500;
-  line-height: 110%;
-  color: var(--light-creme);
+  font-size: clamp(5rem, 7.5vw, 11rem);
+  line-height: 100%;
   text-align: center;
 }
 
-#banner-two .grid .center span {
-  justify-self: flex-end;
-}
+/* THREE */
 
 #banner-three {
   height: 200vh;

@@ -138,7 +138,7 @@
 
 #menu .menu-content li {
   font-family: 'Humane-Medium';
-  font-size: clamp(3rem, 4.375vw, 4.5rem);
+  font-size: clamp(3rem, 4.375vw, 4.25rem);
   font-weight: 500;
   line-height: 110%;
   letter-spacing: .1em;

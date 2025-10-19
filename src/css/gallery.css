@@ -18,32 +18,26 @@
 }
 
 #gallery .img {
-  transform: translateY(0);
   will-change: transform;
 }
 
 /* PART ONE */
 
 #gallery .gallery-part-one {
-  padding: 6% 0 2.75vw 0;
+  padding: 0 2vw;
+  padding-top: min(15rem, 12vw);
   background-color: var(--light-creme);
 }
 
-#gallery .gallery-part-one .grid {
-  padding: 6vw 2vw 0 2vw;
-  padding-top: min(6.375rem, 6vw);
-}
-
 #gallery .gallery-part-one .left {
-  align-self: flex-start;
-  position: relative;
-  isolation: isolate;
+  height: 100vh;
 }
 
-#gallery .gallery-part-one .right {
-  position: relative;
-  bottom: min(9px, .5vw);
-  margin-bottom: min(-9px, -0.5vw);
+#gallery .circle-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: -10.23vw;
 }
 
 h4 {
@@ -57,6 +51,7 @@ h4 b {
 }
 
 #gallery .red-paragraph {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   max-width: 48rem;
 }
 
@@ -67,20 +62,15 @@ h4 b {
 
   position: absolute;
   top: 50%;
-  right: -1.375vw;
-  transform: translate(50%, -50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* PART TWO */
 
 #gallery .gallery-part-two {
-  padding: 0 0 12% 0;
+  padding: 2.75vw 2vw 12vw 2vw;
   background-color: var(--dark-red);
-}
-
-#gallery .gallery-part-two .grid {
-  padding: 0 2vw;
-  position: relative;
 }
 
 #gallery .gallery-part-two .left {
@@ -90,7 +80,7 @@ h4 b {
 
 .hustling-vertical {
   font-family: 'Humane-Regular';
-  font-size: clamp(10rem, 16vw, 18.75rem);
+  font-size: clamp(8rem, 13vw, 18.75rem);
   font-weight: 400;
   text-transform: uppercase;
   white-space: nowrap;
