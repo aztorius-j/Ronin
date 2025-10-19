@@ -12,28 +12,29 @@ ScrollSmoother.create({
   effects: true,
 });
 
+let raf1 = 0, raf2 = 0;
 
-const refreshAfterLayout = (() => {
-  let raf1 = 0, raf2 = 0, t = 0;
-  return () => {
-    cancelAnimationFrame(raf1);
-    cancelAnimationFrame(raf2);
-    clearTimeout(t);
-    raf1 = requestAnimationFrame(() => {
-      raf2 = requestAnimationFrame(async () => {
-        if (document.fonts?.ready) {
-          try { await document.fonts.ready; } catch {}
-        }
-        const pendingImgs = Array.from(document.images).filter(img => !img.complete);
-        if (pendingImgs.length) {
-          await Promise.all(pendingImgs.map(img => img.decode?.().catch(() => {}) || Promise.resolve()));
-        }
-        ScrollSmoother.get()?.refresh();
-        ScrollTrigger.refresh();
-      });
+const refreshAfterLayout = (source) => {
+  cancelAnimationFrame(raf1);
+  cancelAnimationFrame(raf2);
+
+  raf1 = requestAnimationFrame(() => {
+    raf2 = requestAnimationFrame(async () => {
+      if (document.fonts?.ready) {
+        try { await document.fonts.ready; } catch {}
+      }
+      const pendingImgs = Array.from(document.images).filter(img => !img.complete);
+      if (pendingImgs.length) {
+        await Promise.all(
+          pendingImgs.map(img => img.decode?.().catch(() => {}) || Promise.resolve())
+        );
+      }
+      ScrollSmoother.get()?.refresh();
+      ScrollTrigger.refresh();
+      console.log('DONE via ', source, performance.now());
     });
-  };
-})();
+  });
+};
 
 // =========================
 // SECTION-SPECIFIC TRIGGERS
@@ -68,14 +69,13 @@ const experienceLeftImages = Array.from(document.querySelectorAll('#experience .
       experienceRightImages = Array.from(document.querySelectorAll('#experience .right img')),
       experienceCenterImage = document.querySelector('#experience .center img'),
       experienceHeadline = document.querySelector('#experience h3');
-let   imgTranslateValue = window.innerWidth / 10;
 
 const experienceScrollTrigger = () => {
   gsap.fromTo(
     experienceLeftImages,
     { x: 0 },
     {
-      x: -imgTranslateValue,
+      x: () => -(window.innerWidth / 10),
       ease: 'none',
       scrollTrigger: {
         trigger: experienceLeftImages[0],
@@ -105,7 +105,7 @@ const experienceScrollTrigger = () => {
     experienceRightImages,
     { x: 0 },
     {
-      x: imgTranslateValue,
+      x: () => window.innerWidth / 10,
       ease: 'none',
       scrollTrigger: {
         trigger: experienceRightImages[0],
@@ -192,7 +192,7 @@ const galleryVelocityTrigger = () => {
       }
     }
   });
-}
+};
 
 
 // EVENT LISTENERS
@@ -205,19 +205,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('resize', () => {
   ScrollTrigger.refresh();
-  imgTranslateValue = window.innerWidth / 10;
 });
 
 document.addEventListener('menu:updated', () => {
-  refreshAfterLayout();
-  console.log('menu:updated', performance.now());
+  refreshAfterLayout('document - menu:updated');
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  refreshAfterLayout();
-  console.log('DOMContentLoaded', performance.now());
-});
-
-ScrollTrigger.addEventListener('refresh', () => {
-  imgTranslateValue = window.innerWidth / 10;
+window.addEventListener('load', () => {
+  refreshAfterLayout('window - load');
 });
