@@ -24,7 +24,6 @@ const generateMenuCategories = (array) => {
     const menuElement = createMenuCategory(item);
     menuNavigationUl.appendChild(menuElement);
   });
-  console.log('[menu.js] Categories generated', performance.now());
   document.dispatchEvent(new Event('menu:updated'));
 };
 

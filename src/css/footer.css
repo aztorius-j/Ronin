@@ -1,5 +1,5 @@
 footer {
-  padding: 5% 2vw 0 2vw;
+  padding: 5vw 2vw 0 2vw;
   background-color: var(--dark-red);
 }
 
@@ -9,7 +9,7 @@ footer .footer-headline {
 }
 
 footer h5 {
-  font-size: clamp(15rem, 50vw, 46.5rem);
+  font-size: clamp(15rem, 40vw, 46.5rem);
   color: rgb(var(--black));
 }
 

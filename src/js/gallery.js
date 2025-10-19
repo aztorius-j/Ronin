@@ -5,7 +5,6 @@ let   topPosition;
 const containerPosition = () => {
   topPosition = Math.max(32, (window.innerHeight - stickyElement.getBoundingClientRect().height) / 2);
   redCircleContainer.style.top = `-${topPosition}px`;
-  console.log('[gallery.js] Container positioned', performance.now());
 };
 
 containerPosition();

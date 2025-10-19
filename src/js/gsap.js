@@ -31,7 +31,6 @@ const refreshAfterLayout = (source) => {
       }
       ScrollSmoother.get()?.refresh();
       ScrollTrigger.refresh();
-      console.log('Last refresh after: ', source, performance.now());
     });
   });
 };
