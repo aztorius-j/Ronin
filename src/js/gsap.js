@@ -5,7 +5,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
-gsap.registerPlugin(ScrollTrigger,ScrollSmoother);
+import { SplitText } from "gsap/SplitText";
+gsap.registerPlugin(ScrollTrigger,ScrollSmoother,SplitText);
 
 ScrollSmoother.create({
   smooth: 1.75,
@@ -43,9 +44,11 @@ const refreshAfterLayout = (source) => {
 // *** ABOUT US ***
 const aboutUs = document.getElementById('about-us'),
       aboutUsparallaxImg = document.querySelector('#about-us .parallax-img'),
-      aboutUsHeadline = document.querySelector('#about-us .headline');
+      aboutUsHeadline = document.querySelector('#about-us .headline'),
+      headlineLogo = document.querySelector('#about-us .headline img'),
+      aboutUsRedParagraph = document.querySelector('#about-us .left .red-paragraph');
 
-const aboutUsScrollTrigger = () => {
+const aboutUsImageParallax = () => {
   gsap.fromTo(
     aboutUsparallaxImg,
     { y: -20 },
@@ -63,11 +66,69 @@ const aboutUsScrollTrigger = () => {
   );
 };
 
+const aboutUsScrollTrigger = () => {
+  const spin = gsap.to(headlineLogo, {
+    rotation: "+=360",
+    duration: 20,
+    ease: "none",
+    repeat: -1
+  });
+
+  const BASE = 1;
+
+  ScrollTrigger.create({
+    trigger: document.documentElement,
+    start: "top top",
+    end: "bottom bottom",
+    onUpdate(self) {
+      const v = self.getVelocity();
+      const dir = Math.sign(v);
+      const mag = Math.min(Math.abs(v) / 300, 30);
+      const target = BASE + mag * dir;
+
+      gsap.to(spin, { timeScale: target, duration: 0.2, overwrite: "auto" });
+    },
+    onStop() {
+      gsap.to(spin, { timeScale: BASE, duration: 0.8, ease: "power2.out" });
+    }
+  });
+};
+
+
+(async () => {
+  if (document.fonts?.ready) {
+    try { await document.fonts.ready; } catch {}
+  }
+
+  const redSplit = new SplitText(aboutUsRedParagraph, {
+    type: "words,chars",
+    wordsClass: "word",
+    charsClass: "char"
+  });
+
+  gsap.fromTo(
+    redSplit.chars,
+    { opacity: 0 },
+    {
+      opacity: 1,
+      ease: "power2.out",
+      stagger: { each: 0.02, from: "start" },
+      scrollTrigger: {
+        trigger: aboutUsRedParagraph,
+        start: "top 90%",
+        end: "top 30%",
+        scrub: true,
+        invalidateOnRefresh: true
+      }
+    }
+  );
+})();
+
 // *** EXPERIENCE ***
 const experienceLeftImages = Array.from(document.querySelectorAll('#experience .left img')),
       experienceRightImages = Array.from(document.querySelectorAll('#experience .right img')),
       experienceCenterImage = document.querySelector('#experience .center img'),
-      experienceHeadline = document.querySelector('#experience h3');
+      experienceHeadline = document.querySelector('#experience .headline-container');
 
 const experienceScrollTrigger = () => {
   gsap.fromTo(
@@ -117,12 +178,29 @@ const experienceScrollTrigger = () => {
   )
 };
 
+const expHeadlineScrollTrigger = () => {
+  gsap.fromTo(
+    experienceHeadline,
+    { y: 100, autoAlpha: 0 },
+    {
+      y: 0,
+      autoAlpha: 1,
+      duration: 1.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: experienceHeadline,
+        start: 'top 90%',
+        once: true
+      }
+    }
+  );
+};
+
 // *** GALLERY ***
 const gallery = document.getElementById('gallery'),
       galleryPartOneLeft = document.querySelector('#gallery .gallery-part-one .left'),
       StickyElement = document.querySelector('#gallery .gallery-part-one .sticky'),
       galleryPartTwo = document.querySelector('#gallery .gallery-part-two'),
-      redCircleContainer = document.querySelector('#gallery .circle-container'),
       redCircle = document.querySelector('#gallery .red-circle'),
       imgs = gsap.utils.toArray('#gallery img');
 
@@ -198,8 +276,10 @@ const galleryVelocityTrigger = () => {
 
 // EVENT LISTENERS
 document.addEventListener('DOMContentLoaded', () => {
+  aboutUsImageParallax();
   aboutUsScrollTrigger();
   experienceScrollTrigger();
+  expHeadlineScrollTrigger();
   galleryScrollTrigger();
   galleryVelocityTrigger();
 });

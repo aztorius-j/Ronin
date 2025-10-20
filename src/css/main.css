@@ -38,7 +38,7 @@ a.red-button {
   font-size: 1.25rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--creme);
+  color: var(--light-creme);
 
   display: inline-block;
   padding: 1.25rem 3.5rem;

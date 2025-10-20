@@ -18,7 +18,7 @@
 
 .mask {
   width: 100%;
-  height: 39vw;
+  height: min(39vw, 764px);
   position: absolute;
   top: -2px;
   left: 0;
@@ -57,13 +57,15 @@
   font-size: clamp(1.5rem, 2.75vw, 2.25rem);
 }
 
+.char {
+  opacity: 0;
+}
+
 #about-us .headline img {
   width: clamp(2rem, 8vw, 9.5rem);
   position: absolute;
   top: 22%;
   left: 14.6%;
-
-  animation: logoRotation 20s linear infinite;
 }
 
 #about-us .grid {
@@ -80,8 +82,6 @@
 
 #about-us .left img {
   width: 90%;
-  position: relative;
-  top: 10%;
 }
 
 #about-us .right {
@@ -91,12 +91,6 @@
 #about-us .right img {
   width: 100%;
   margin-bottom: 14%;
-}
-
-
-@keyframes logoRotation {
-  from { transform: rotate(0deg) }
-  to { transform: rotate(360deg)}
 }
 
 @media screen and (max-width: 840px) {
