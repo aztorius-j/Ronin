@@ -44,22 +44,22 @@ h4 {
   font-size: clamp(7rem, 15vw, 16.875rem);
   color: var(--dark-red);
   margin-bottom: 3%;
+  mix-blend-mode: difference;
 }
 
-h4 b {
+h4:nth-of-type(2) {
   mix-blend-mode: multiply;
 }
 
 #gallery .red-paragraph {
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   max-width: 48rem;
+  mix-blend-mode: difference;
 }
 
 #gallery .red-circle {
   border-radius: 50%;
   background-color: var(--dark-red);
-  mix-blend-mode: difference;
-
   position: absolute;
   top: 50%;
   left: 50%;
