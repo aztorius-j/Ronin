@@ -1,4 +1,5 @@
 body {
+  cursor: none;
   position: relative;
   background-color: var(--light-creme);
 }
@@ -49,11 +50,22 @@ a.red-button {
   display: grid;
 }
 
-.arrow-left,
-.arrow-right {
-  cursor: pointer;
+#custom-cursor {
+  position: fixed;
+  top: -16px;
+  left: -16px;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
 }
 
+body, button, a, [role="button"], input[type="button"], input[type="submit"] {
+  cursor: none;
+}
+    
 
 @media screen and (max-width: 1000px) {
   #smooth-wrapper {

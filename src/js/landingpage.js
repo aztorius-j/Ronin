@@ -10,3 +10,9 @@ window.addEventListener('resize', () => {
 document.addEventListener('DOMContentLoaded', () => {
   landingPageBackground.style.height = `${landingPageHeight}px`;
 });
+
+// *** CUSTOM CURSOR ***
+const cursor = document.getElementById('custom-cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+});

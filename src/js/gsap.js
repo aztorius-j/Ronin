@@ -15,7 +15,7 @@ ScrollSmoother.create({
 
 let raf1 = 0, raf2 = 0;
 
-const refreshAfterLayout = (source) => {
+const refreshAfterLayout = () => {
   cancelAnimationFrame(raf1);
   cancelAnimationFrame(raf2);
 
@@ -196,6 +196,93 @@ const expHeadlineScrollTrigger = () => {
   );
 };
 
+// *** MENU ***
+const menuContent = document.querySelector('#menu .menu-content'),
+      menuImg = document.querySelector('#menu .menu-content img');
+
+const menuScrollTrigger = () => {
+  const PAD = 0.075;
+
+  const setX = gsap.quickTo(menuImg, "x", { duration: 1, ease: "power3.out", overwrite: "auto" });
+  const setY = gsap.quickTo(menuImg, "y", { duration: 1, ease: "power3.out", overwrite: "auto" });
+
+  const clamp01 = gsap.utils.clamp(0, 1);
+
+  let lastX = null, lastY = null;
+
+  const getBounds = () => {
+    const r = menuContent.getBoundingClientRect();
+    const imgH = menuImg.getBoundingClientRect().height;
+    const padPx = r.height * PAD;
+    const travelY = Math.max(0, r.height - 2 * padPx - imgH);
+    const maxX = r.width / 20;
+    return { r, padPx, travelY, maxX };
+  };
+
+  const applyFromClient = (clientX, clientY) => {
+    const { r, padPx, travelY, maxX } = getBounds();
+    const nx = clamp01((clientX - r.left) / r.width);
+    const ny = clamp01((clientY - r.top) / r.height);
+    setX((nx - 0.5) * 2 * maxX);
+    setY(padPx + ny * travelY);
+  };
+
+  const onMove = (e) => {
+    lastX = e.clientX;
+    lastY = e.clientY;
+    applyFromClient(lastX, lastY);
+  };
+
+  const onEnter = (e) => {
+    lastX = e.clientX;
+    lastY = e.clientY;
+    applyFromClient(lastX, lastY);
+  };
+
+  menuContent.addEventListener('mouseenter', onEnter);
+  menuContent.addEventListener('mousemove', onMove);
+
+  let ticking = false;
+  let isHovering = false;
+
+  const resync = () => {
+    if (ticking || !isHovering) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      ticking = false;
+      if (lastX != null && lastY != null) {
+        applyFromClient(lastX, lastY);
+      }
+    });
+  };
+
+  menuContent.addEventListener('mouseenter', (e) => {
+    isHovering = true;
+    onEnter(e);
+  });
+  menuContent.addEventListener('mouseleave', () => {
+    isHovering = false;
+  });
+  window.addEventListener('scroll', resync, { passive: true });
+  window.addEventListener('resize', resync);
+
+  const initY = () => {
+    const { padPx } = getBounds();
+    gsap.set(menuImg, { x: 0, y: padPx, force3D: true });
+  };
+
+  const delayedInit = () => {
+    requestAnimationFrame(() =>
+      requestAnimationFrame(async () => {
+        try { await menuImg.decode?.(); } catch {}
+        initY();
+      })
+    );
+  };
+
+  document.addEventListener('menu:updated', delayedInit);
+};
+
 // *** GALLERY ***
 const gallery = document.getElementById('gallery'),
       galleryPartOneLeft = document.querySelector('#gallery .gallery-part-one .left'),
@@ -205,7 +292,6 @@ const gallery = document.getElementById('gallery'),
       imgs = gsap.utils.toArray('#gallery img');
 
 const galleryScrollTrigger = () => {
-
   ScrollTrigger.create({
     trigger: StickyElement,
     start: () => window.innerHeight > StickyElement.getBoundingClientRect().height + 64 ? 'center center' : 'top-=32 top',
@@ -280,6 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
   aboutUsScrollTrigger();
   experienceScrollTrigger();
   expHeadlineScrollTrigger();
+  menuScrollTrigger();
   galleryScrollTrigger();
   galleryVelocityTrigger();
 });

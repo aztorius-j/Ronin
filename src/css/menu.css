@@ -166,10 +166,11 @@
 #menu .menu-content img {
   max-width: 25%;
   position: absolute;
-  top: 8%;
-  right: 10%;
-  transform: rotate(-10deg);
+  top: 0;
+  right: 10vw;
   z-index: 1;
+  transform: rotate(-10deg);
+  transform-origin: top right;
 }
 
 
