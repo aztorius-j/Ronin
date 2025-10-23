@@ -1,5 +1,4 @@
 body {
-  cursor: none;
   position: relative;
   background-color: var(--light-creme);
 }
@@ -50,22 +49,28 @@ a.red-button {
   display: grid;
 }
 
-#custom-cursor {
-  position: fixed;
-  top: -16px;
-  left: -16px;
-  width: 32px;
-  height: 32px;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: difference;
+.arrow-left,
+.arrow-right {
+  cursor: pointer;
 }
 
-body, button, a, [role="button"], input[type="button"], input[type="submit"] {
-  cursor: none;
+#custom-cursor {
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--creme);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms ease, opacity 500ms ease;
+  will-change: transform, opacity;
+  mix-blend-mode: difference;
+  opacity: 0;
 }
-    
+
 
 @media screen and (max-width: 1000px) {
   #smooth-wrapper {

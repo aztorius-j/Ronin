@@ -11,8 +11,47 @@ document.addEventListener('DOMContentLoaded', () => {
   landingPageBackground.style.height = `${landingPageHeight}px`;
 });
 
+
 // *** CUSTOM CURSOR ***
-const cursor = document.getElementById('custom-cursor');
-document.addEventListener('mousemove', e => {
-  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+const customCursor = document.getElementById('custom-cursor');
+let lastX = 0, lastY = 0;
+
+const checkPointerTarget = (el) => {
+  const style = window.getComputedStyle(el);
+  return (
+    style.cursor === "pointer" ||
+    el.tagName === "A" ||
+    el.tagName === "BUTTON"
+  );
+};
+
+document.body.addEventListener("mouseenter", () => {
+  customCursor.style.opacity = 1;
+});
+document.body.addEventListener("mouseleave", () => {
+  customCursor.style.opacity = 0;
+});
+
+window.addEventListener("mousemove", (event) => {
+  customCursor.style.opacity = 1;
+  const posX = event.clientX;
+  const posY = event.clientY;
+  lastX = posX;
+  lastY = posY;
+
+  customCursor.animate(
+    { left: `${posX}px`, top: `${posY}px` },
+    { duration: 500, fill: "forwards" }
+  );
+
+  const isPointer = checkPointerTarget(event.target);
+  customCursor.style.transform = `translate(-50%, -50%) scale(${isPointer ? 1.5 : 1})`;
+});
+
+window.addEventListener("scroll", () => {
+  const hovered = document.elementFromPoint(lastX, lastY);
+  if (!hovered) return;
+
+  const isPointer = checkPointerTarget(hovered);
+  customCursor.style.transform = `translate(-50%, -50%) scale(${isPointer ? 1.5 : 1})`;
 });
