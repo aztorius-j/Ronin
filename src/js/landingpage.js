@@ -14,7 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // *** CUSTOM CURSOR ***
 const customCursor = document.getElementById('custom-cursor');
-let lastX = 0, lastY = 0;
+let lastX = 0, lastY = 0, isCursorActive = false;
+
+const onFirstMove = () => {
+  isCursorActive = true;
+  customCursor.style.opacity = 1;
+  window.removeEventListener('mousemove', onFirstMove);
+};
+
+window.addEventListener('mousemove', onFirstMove, { once: true });
 
 const checkPointerTarget = (el) => {
   const style = window.getComputedStyle(el);
@@ -25,19 +33,17 @@ const checkPointerTarget = (el) => {
   );
 };
 
-document.body.addEventListener("mouseenter", () => {
-  customCursor.style.opacity = 1;
-});
 document.body.addEventListener("mouseleave", () => {
   customCursor.style.opacity = 0;
 });
 
 window.addEventListener("mousemove", (event) => {
-  customCursor.style.opacity = 1;
   const posX = event.clientX;
   const posY = event.clientY;
   lastX = posX;
   lastY = posY;
+
+  if (isCursorActive) customCursor.style.opacity = 1;
 
   customCursor.animate(
     { left: `${posX}px`, top: `${posY}px` },
@@ -49,6 +55,7 @@ window.addEventListener("mousemove", (event) => {
 });
 
 window.addEventListener("scroll", () => {
+  if (!isCursorActive) return;
   const hovered = document.elementFromPoint(lastX, lastY);
   if (!hovered) return;
 
