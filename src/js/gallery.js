@@ -8,7 +8,9 @@ const containerPosition = () => {
   console.log(topPosition);
 };
 
-document.addEventListener('DOMContentLoaded', containerPosition);
+setTimeout(() => {
+  containerPosition();
+}, 1000);
 document.dispatchEvent(new Event('gallery:updated'));
 
 // EVENT LISTENERS
