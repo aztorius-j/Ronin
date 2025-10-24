@@ -62,3 +62,21 @@ window.addEventListener("scroll", () => {
   const isPointer = checkPointerTarget(hovered);
   customCursor.style.transform = `translate(-50%, -50%) scale(${isPointer ? 1.5 : 1})`;
 });
+
+
+const redCircleContainer = document.querySelector('#gallery .circle-container'),
+      stickyElement = document.querySelector('#gallery .gallery-part-one .sticky');
+let   topPosition;
+
+const containerPosition = () => {
+  topPosition = Math.max(32, (window.innerHeight - stickyElement.getBoundingClientRect().height) / 2);
+  redCircleContainer.style.top = `-${topPosition}px`;
+  console.log(topPosition);
+};
+
+document.addEventListener('menu:updated', containerPosition);
+
+document.dispatchEvent(new Event('gallery:updated'));
+
+// EVENT LISTENERS
+window.addEventListener('resize', containerPosition);

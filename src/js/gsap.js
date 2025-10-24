@@ -276,7 +276,6 @@ const menuScrollTrigger = () => {
       requestAnimationFrame(async () => {
         try { await menuImgBox.decode?.(); } catch {}
         initY();
-        console.log('hello from gsap.js');
       })
     );
   };
