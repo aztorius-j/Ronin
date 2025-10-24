@@ -7,7 +7,7 @@ const containerPosition = () => {
   redCircleContainer.style.top = `-${topPosition}px`;
 };
 
-containerPosition();
+window.addEventListener('load', containerPosition);
 document.dispatchEvent(new Event('gallery:updated'));
 
 // EVENT LISTENERS
