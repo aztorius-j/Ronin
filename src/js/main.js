@@ -74,9 +74,11 @@ const containerPosition = () => {
   console.log(topPosition);
 };
 
-document.addEventListener('menu:updated', containerPosition);
-
 document.dispatchEvent(new Event('gallery:updated'));
 
 // EVENT LISTENERS
+document.addEventListener('menu:updated', () => {
+  containerPosition();
+  console.log('main.js menu:updated');
+});
 window.addEventListener('resize', containerPosition);

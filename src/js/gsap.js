@@ -377,8 +377,10 @@ window.addEventListener('resize', () => {
 
 document.addEventListener('menu:updated', () => {
   refreshAfterLayout('menu:updated');
+  console.log('gsap document EL menu:updated');
 });
 
 document.addEventListener('gallery:updated', () => {
   refreshAfterLayout('gallery:updated');
+  console.log('gsap document EL gallery:updated');
 });
