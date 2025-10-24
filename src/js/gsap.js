@@ -198,13 +198,13 @@ const expHeadlineScrollTrigger = () => {
 
 // *** MENU ***
 const menuContent = document.querySelector('#menu .menu-content'),
-      menuImg = document.querySelector('#menu .menu-content img');
+      menuImgBox = document.querySelector('#menu .menu-image-box');
 
 const menuScrollTrigger = () => {
   const PAD = 0.075;
 
-  const setX = gsap.quickTo(menuImg, "x", { duration: 1, ease: "power3.out", overwrite: "auto" });
-  const setY = gsap.quickTo(menuImg, "y", { duration: 1, ease: "power3.out", overwrite: "auto" });
+  const setX = gsap.quickTo(menuImgBox, "x", { duration: 1, ease: "power3.out", overwrite: "auto" });
+  const setY = gsap.quickTo(menuImgBox, "y", { duration: 1, ease: "power3.out", overwrite: "auto" });
 
   const clamp01 = gsap.utils.clamp(0, 1);
 
@@ -212,7 +212,7 @@ const menuScrollTrigger = () => {
 
   const getBounds = () => {
     const r = menuContent.getBoundingClientRect();
-    const imgH = menuImg.getBoundingClientRect().height;
+    const imgH = menuImgBox.getBoundingClientRect().height;
     const padPx = r.height * PAD;
     const travelY = Math.max(0, r.height - 2 * padPx - imgH);
     const maxX = r.width / 20;
@@ -268,13 +268,13 @@ const menuScrollTrigger = () => {
 
   const initY = () => {
     const { padPx } = getBounds();
-    gsap.set(menuImg, { x: 0, y: padPx, force3D: true });
+    gsap.set(menuImgBox, { x: 0, y: padPx, force3D: true });
   };
 
   const delayedInit = () => {
     requestAnimationFrame(() =>
       requestAnimationFrame(async () => {
-        try { await menuImg.decode?.(); } catch {}
+        try { await menuImgBox.decode?.(); } catch {}
         initY();
       })
     );

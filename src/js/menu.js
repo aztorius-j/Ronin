@@ -2,7 +2,9 @@ const projectData = await fetch('/project-data.json', {cache: 'no-cache'}).then(
 const {menu} = projectData;
 
 const menuNavigationUl = document.querySelector('#menu .menu-navigation ul'),
-      menuContentUl = document.querySelector('#menu .menu-content ul');
+      menuContentUl = document.querySelector('#menu .menu-content ul'),
+      menuImgBox = document.querySelector('#menu .menu-image-box'),
+      menuImages = Array.from(document.querySelectorAll('#menu .menu-image img'));
 let   activeMenuCategory;
 
 
@@ -29,17 +31,42 @@ const generateMenuCategories = (array) => {
 
 const createCategoryItem = (item) => {
   const liElement = document.createElement('li');
-  liElement.textContent = item;
+  liElement.textContent = item.name;
   
   return liElement;
 };
 
 const generateCategoryItems = (category) => {
   menuContentUl.replaceChildren();
+  menuImgBox.replaceChildren();
+
   const categoryName = category.querySelector('span').textContent.trim();
   const categoryData = menu.find(cat => cat.heading === categoryName);
+  const createdPictures = [];
+
   categoryData.items.forEach(item => {
     menuContentUl.appendChild(createCategoryItem(item));
+    const picture = document.createElement('img');
+    picture.src = `${item.image}`;
+    menuImgBox.appendChild(picture);
+    createdPictures.push(picture);
+  });
+
+  const items = Array.from(menuContentUl.children);
+
+  const showImageByIndex = (idx) => {
+    createdPictures.forEach((img, i) => {
+      img.style.opacity = (i === idx) ? '1' : '0';
+    });
+  };
+
+  items.forEach((li, index) => {
+    li.addEventListener('mouseenter', () => {
+      if (createdPictures[index]) showImageByIndex(index);
+    });
+    li.addEventListener('mouseleave', () => {
+      createdPictures.forEach(img => img.style.opacity = '0');
+    });
   });
 };
 

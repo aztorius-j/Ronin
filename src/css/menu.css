@@ -163,14 +163,24 @@
   );
 }
 
-#menu .menu-content img {
-  max-width: 25%;
+#menu .menu-image-box {
+  width: 25%;
+  height: 30%;
   position: absolute;
   top: 0;
   right: 10vw;
   z-index: 1;
   transform: rotate(-10deg);
   transform-origin: top right;
+  pointer-events: none;
+}
+
+#menu .menu-image-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 250ms ease;
 }
 
 
