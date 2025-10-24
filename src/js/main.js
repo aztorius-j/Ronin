@@ -71,14 +71,18 @@ let   topPosition;
 const containerPosition = () => {
   topPosition = Math.max(32, (window.innerHeight - stickyElement.getBoundingClientRect().height) / 2);
   redCircleContainer.style.top = `-${topPosition}px`;
-  console.log(topPosition);
+  console.log(topPosition, performance.now());
 };
 
 document.dispatchEvent(new Event('gallery:updated'));
 
 // EVENT LISTENERS
 document.addEventListener('menu:updated', () => {
+  console.log('main.js menu:updated', performance.now());
   containerPosition();
-  console.log('main.js menu:updated');
+});
+window.addEventListener('load', () => {
+  containerPosition();
+  console.log('load', performance.now());
 });
 window.addEventListener('resize', containerPosition);
