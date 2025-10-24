@@ -13,29 +13,6 @@ ScrollSmoother.create({
   effects: true,
 });
 
-let raf1 = 0, raf2 = 0;
-
-const refreshAfterLayout = () => {
-  cancelAnimationFrame(raf1);
-  cancelAnimationFrame(raf2);
-
-  raf1 = requestAnimationFrame(() => {
-    raf2 = requestAnimationFrame(async () => {
-      if (document.fonts?.ready) {
-        try { await document.fonts.ready; } catch {}
-      }
-      const pendingImgs = Array.from(document.images).filter(img => !img.complete);
-      if (pendingImgs.length) {
-        await Promise.all(
-          pendingImgs.map(img => img.decode?.().catch(() => {}) || Promise.resolve())
-        );
-      }
-      ScrollSmoother.get()?.refresh();
-      ScrollTrigger.refresh();
-    });
-  });
-};
-
 // =========================
 // SECTION-SPECIFIC TRIGGERS
 // =========================
@@ -373,14 +350,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('resize', () => {
   ScrollTrigger.refresh();
-});
-
-document.addEventListener('menu:updated', () => {
-  refreshAfterLayout('menu:updated');
-  console.log('gsap document EL menu:updated');
-});
-
-document.addEventListener('gallery:updated', () => {
-  refreshAfterLayout('gallery:updated');
-  console.log('gsap document EL gallery:updated');
 });
