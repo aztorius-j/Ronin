@@ -57,7 +57,7 @@ a.red-button {
 #custom-cursor {
   width: 60px;
   height: 60px;
-  border: 1px solid var(--creme);
+  border: 2px solid var(--creme);
   position: fixed;
   top: 0;
   left: 0;
