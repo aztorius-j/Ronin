@@ -5,9 +5,10 @@ let   topPosition;
 const containerPosition = () => {
   topPosition = Math.max(32, (window.innerHeight - stickyElement.getBoundingClientRect().height) / 2);
   redCircleContainer.style.top = `-${topPosition}px`;
+  console.log(topPosition);
 };
 
-window.addEventListener('load', containerPosition);
+document.addEventListener('DOMContentLoaded', containerPosition);
 document.dispatchEvent(new Event('gallery:updated'));
 
 // EVENT LISTENERS
