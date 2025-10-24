@@ -8,9 +8,12 @@ const containerPosition = () => {
   console.log(topPosition);
 };
 
-setTimeout(() => {
-  containerPosition();
-}, 1000);
+// setTimeout(() => {
+//   containerPosition();
+// }, 1000);
+
+document.addEventListener('menu:updated', containerPosition);
+
 document.dispatchEvent(new Event('gallery:updated'));
 
 // EVENT LISTENERS
