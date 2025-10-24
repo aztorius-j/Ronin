@@ -68,21 +68,15 @@ const redCircleContainer = document.querySelector('#gallery .circle-container'),
       stickyElement = document.querySelector('#gallery .gallery-part-one .sticky');
 let   topPosition;
 
-const containerPosition = () => {
+const containerPosition = (source) => {
   topPosition = Math.max(32, (window.innerHeight - stickyElement.getBoundingClientRect().height) / 2);
   redCircleContainer.style.top = `-${topPosition}px`;
-  console.log(topPosition, performance.now());
+  console.log(source, topPosition, performance.now());
 };
 
 document.dispatchEvent(new Event('gallery:updated'));
 
 // EVENT LISTENERS
-document.addEventListener('menu:updated', () => {
-  console.log('main.js menu:updated', performance.now());
-  containerPosition();
-});
-window.addEventListener('load', () => {
-  containerPosition();
-  console.log('load', performance.now());
-});
+document.addEventListener('menu:updated', containerPosition('menu:updated'));
+window.addEventListener('load', containerPosition('load'));
 window.addEventListener('resize', containerPosition);
