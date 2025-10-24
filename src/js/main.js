@@ -1,17 +1,3 @@
-const landingPage = document.getElementById('landing-page'),
-      landingPageBackground = document.querySelector('.landing-page-background');
-
-let landingPageHeight = landingPage.getBoundingClientRect().height;
-
-window.addEventListener('resize', () => {
-  landingPageHeight = landingPage.getBoundingClientRect().height;
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  landingPageBackground.style.height = `${landingPageHeight}px`;
-});
-
-
 // *** CUSTOM CURSOR ***
 const customCursor = document.getElementById('custom-cursor');
 let lastX = 0, lastY = 0, isCursorActive = false;
@@ -63,7 +49,21 @@ window.addEventListener("scroll", () => {
   customCursor.style.transform = `translate(-50%, -50%) scale(${isPointer ? 1.5 : 1})`;
 });
 
+// *** LANDING PAGE ***
+const landingPage = document.getElementById('landing-page'),
+      landingPageBackground = document.querySelector('.landing-page-background');
 
+let landingPageHeight = landingPage.getBoundingClientRect().height;
+
+window.addEventListener('resize', () => {
+  landingPageHeight = landingPage.getBoundingClientRect().height;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  landingPageBackground.style.height = `${landingPageHeight}px`;
+});
+
+// *** GALLERY ***
 const redCircleContainer = document.querySelector('#gallery .circle-container'),
       stickyElement = document.querySelector('#gallery .gallery-part-one .sticky');
 let   topPosition;
@@ -71,12 +71,9 @@ let   topPosition;
 const containerPosition = (source) => {
   topPosition = Math.max(32, (window.innerHeight - stickyElement.getBoundingClientRect().height) / 2);
   redCircleContainer.style.top = `-${topPosition}px`;
-  console.log(source, topPosition, performance.now());
 };
 
-document.dispatchEvent(new Event('gallery:updated'));
-
-// EVENT LISTENERS
-document.addEventListener('menu:updated', containerPosition('menu:updated'));
-window.addEventListener('load', containerPosition('load'));
+document.addEventListener('menu:updated', containerPosition);
 window.addEventListener('resize', containerPosition);
+
+document.dispatchEvent(new Event('gallery:updated'));
