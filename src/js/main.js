@@ -1,14 +1,23 @@
 // *** CUSTOM CURSOR ***
 const customCursor = document.getElementById('custom-cursor');
-let lastX = 0, lastY = 0, isCursorActive = false;
+let lastX = 0, lastY = 0, isCursorActive = false, headerAnimationDone = false;
+
+document.addEventListener('headerAnimation:finished', () => {
+  setTimeout(() => {
+    headerAnimationDone = true;
+    introSection.style.display = 'none';
+    body.style.overflow = 'visible';
+  }, 1000);
+});
 
 const onFirstMove = () => {
+  if (!headerAnimationDone) return;
   isCursorActive = true;
   customCursor.style.opacity = 1;
   window.removeEventListener('mousemove', onFirstMove);
 };
 
-window.addEventListener('mousemove', onFirstMove, { once: true });
+window.addEventListener('mousemove', onFirstMove);
 
 const checkPointerTarget = (el) => {
   const style = window.getComputedStyle(el);
@@ -47,6 +56,31 @@ window.addEventListener("scroll", () => {
 
   const isPointer = checkPointerTarget(hovered);
   customCursor.style.transform = `translate(-50%, -50%) scale(${isPointer ? 1.5 : 1})`;
+});
+
+// *** INTRO ANIMATION ***
+const body = document.querySelector('body'),
+      introSection = document.getElementById('intro'),
+      introImage = document.querySelector('img.intro-img'),
+      header = document.querySelector('header');
+
+const introImgOpacity = () => {
+    introImage.style.opacity = 1;
+    introImage.addEventListener('transitionend', introSectionHide, {once: true});
+};
+
+const introSectionHide = () => {
+  introSection.style.transform = 'translateY(-102vh)';
+  introSection.addEventListener('transitionend', () => {
+    setTimeout(() => {
+      header.style.transform = 'translateY(0px)';
+      document.dispatchEvent(new Event('headerAnimation:finished'));
+    }, 750); 
+  }, {once: true});
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(introImgOpacity, 500);
 });
 
 // *** LANDING PAGE ***

@@ -41,6 +41,32 @@ const refreshAfterLayout = () => {
 // =========================
 
 
+// *** LANDING PAGE ***
+const landingPageTitle = Array.from(document.querySelectorAll('#landing-page h1'));
+let   words;
+
+(async () => {
+  if (document.fonts?.ready) {
+    try { await document.fonts.ready; } catch {}
+  }
+
+  const headlineSplit = new SplitText(landingPageTitle, {type: 'words'});
+  words = headlineSplit.words;
+  gsap.set(words, {y: '25vw'});
+})();
+
+const landingPageTextSplit = () => {
+  gsap.to(words, 
+    {
+      y: 0,
+      duration: 1
+    }
+  );
+};
+
+document.addEventListener('headerAnimation:finished', landingPageTextSplit);
+
+
 // *** ABOUT US ***
 const aboutUs = document.getElementById('about-us'),
       aboutUsparallaxImg = document.querySelector('#about-us .parallax-img'),

@@ -12,10 +12,43 @@
   z-index: -1;
 }
 
+#intro {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--creme);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  transition: transform 750ms ease-in-out;
+}
+
+img.intro-img {
+  width: auto;
+  height: 35vh;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+#landing-page .landing-page-title {
+  padding: 13.375rem 0 4.4rem 2vw;
+  transform: translateY(-1vw);
+}
+
+#landing-page .mask {
+  overflow: hidden;
+}
+
 #landing-page h1 {
   font-size: clamp(8rem, 30vw, 26.75rem);
   color: var(--dark-red);
-  padding: 13.375rem 0 4.4rem 2vw;
+  transform: translateY(1vw);
 }
 
 #landing-page .flex-container {

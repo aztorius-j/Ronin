@@ -9,6 +9,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+
+  transform: translateY(-200px);
+  transition: transform 1s ease;
 }
 
 .logo-container {

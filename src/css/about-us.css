@@ -16,7 +16,7 @@
   position: relative;
 }
 
-.mask {
+#about-us .mask {
   width: 100%;
   height: min(39vw, 764px);
   position: absolute;
